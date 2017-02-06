@@ -7,21 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6184618A1E48DB860062E0FE /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618461891E48DB860062E0FE /* ApiService.swift */; };
 		61DFC09C1E48A94B0017923C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DFC09B1E48A94B0017923C /* AppDelegate.swift */; };
-		61DFC09E1E48A94B0017923C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DFC09D1E48A94B0017923C /* ViewController.swift */; };
-		61DFC0A11E48A94B0017923C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61DFC09F1E48A94B0017923C /* Main.storyboard */; };
+		61DFC09E1E48A94B0017923C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DFC09D1E48A94B0017923C /* HomeViewController.swift */; };
 		61DFC0A31E48A94B0017923C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61DFC0A21E48A94B0017923C /* Assets.xcassets */; };
 		61DFC0A61E48A94B0017923C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61DFC0A41E48A94B0017923C /* LaunchScreen.storyboard */; };
+		61DFC0AE1E48B50E0017923C /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DFC0AD1E48B50E0017923C /* BaseCell.swift */; };
+		61DFC0B11E48B7780017923C /* AnimalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DFC0B01E48B7780017923C /* AnimalCell.swift */; };
+		61DFC0B61E48CA190017923C /* Animals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DFC0B51E48CA190017923C /* Animals.swift */; };
+		7DFD13CBC7C0EA79EC8E371A /* Pods_aniamal_adoption.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51049384F6230C4046F5C20C /* Pods_aniamal_adoption.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		61DFC0981E48A94B0017923C /* aniamal-adoption.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "aniamal-adoption.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		51049384F6230C4046F5C20C /* Pods_aniamal_adoption.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aniamal_adoption.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		618461891E48DB860062E0FE /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		61DFC0981E48A94B0017923C /* animal-adoption.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "animal-adoption.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61DFC09B1E48A94B0017923C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		61DFC09D1E48A94B0017923C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		61DFC0A01E48A94B0017923C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		61DFC09D1E48A94B0017923C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		61DFC0A21E48A94B0017923C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		61DFC0A51E48A94B0017923C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		61DFC0A71E48A94B0017923C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61DFC0AD1E48B50E0017923C /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		61DFC0B01E48B7780017923C /* AnimalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalCell.swift; sourceTree = "<group>"; };
+		61DFC0B51E48CA190017923C /* Animals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animals.swift; sourceTree = "<group>"; };
+		78CDC2F20FFBC07627F21866 /* Pods-aniamal-adoption.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aniamal-adoption.release.xcconfig"; path = "Pods/Target Support Files/Pods-aniamal-adoption/Pods-aniamal-adoption.release.xcconfig"; sourceTree = "<group>"; };
+		A4CC2BD5737D4B3B3081DB26 /* Pods-aniamal-adoption.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aniamal-adoption.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aniamal-adoption/Pods-aniamal-adoption.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,59 +39,110 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DFD13CBC7C0EA79EC8E371A /* Pods_aniamal_adoption.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		237E7D2406232F2D02C53329 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				51049384F6230C4046F5C20C /* Pods_aniamal_adoption.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		61DFC08F1E48A94A0017923C = {
 			isa = PBXGroup;
 			children = (
-				61DFC09A1E48A94B0017923C /* aniamal-adoption */,
+				61DFC09A1E48A94B0017923C /* animal-adoption */,
 				61DFC0991E48A94B0017923C /* Products */,
+				AAF8256DE9F0FE96E0AE8574 /* Pods */,
+				237E7D2406232F2D02C53329 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		61DFC0991E48A94B0017923C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				61DFC0981E48A94B0017923C /* aniamal-adoption.app */,
+				61DFC0981E48A94B0017923C /* animal-adoption.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		61DFC09A1E48A94B0017923C /* aniamal-adoption */ = {
+		61DFC09A1E48A94B0017923C /* animal-adoption */ = {
 			isa = PBXGroup;
 			children = (
-				61DFC09B1E48A94B0017923C /* AppDelegate.swift */,
-				61DFC09D1E48A94B0017923C /* ViewController.swift */,
-				61DFC09F1E48A94B0017923C /* Main.storyboard */,
+				618461891E48DB860062E0FE /* ApiService.swift */,
+				61DFC0AF1E48B5250017923C /* View */,
+				61DFC0B21E48BB3A0017923C /* ViewController */,
+				61DFC0B71E48CA200017923C /* model */,
 				61DFC0A21E48A94B0017923C /* Assets.xcassets */,
 				61DFC0A41E48A94B0017923C /* LaunchScreen.storyboard */,
 				61DFC0A71E48A94B0017923C /* Info.plist */,
+				61DFC09B1E48A94B0017923C /* AppDelegate.swift */,
 			);
+			name = "animal-adoption";
 			path = "aniamal-adoption";
+			sourceTree = "<group>";
+		};
+		61DFC0AF1E48B5250017923C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				61DFC0AD1E48B50E0017923C /* BaseCell.swift */,
+				61DFC0B01E48B7780017923C /* AnimalCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		61DFC0B21E48BB3A0017923C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				61DFC09D1E48A94B0017923C /* HomeViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		61DFC0B71E48CA200017923C /* model */ = {
+			isa = PBXGroup;
+			children = (
+				61DFC0B51E48CA190017923C /* Animals.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		AAF8256DE9F0FE96E0AE8574 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A4CC2BD5737D4B3B3081DB26 /* Pods-aniamal-adoption.debug.xcconfig */,
+				78CDC2F20FFBC07627F21866 /* Pods-aniamal-adoption.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		61DFC0971E48A94B0017923C /* aniamal-adoption */ = {
+		61DFC0971E48A94B0017923C /* animal-adoption */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 61DFC0AA1E48A94B0017923C /* Build configuration list for PBXNativeTarget "aniamal-adoption" */;
+			buildConfigurationList = 61DFC0AA1E48A94B0017923C /* Build configuration list for PBXNativeTarget "animal-adoption" */;
 			buildPhases = (
+				D6D7A88971216BE48CAD5812 /* [CP] Check Pods Manifest.lock */,
 				61DFC0941E48A94B0017923C /* Sources */,
 				61DFC0951E48A94B0017923C /* Frameworks */,
 				61DFC0961E48A94B0017923C /* Resources */,
+				B1656CF1396DBD4D5D89B9AE /* [CP] Embed Pods Frameworks */,
+				631C35239210ADF98D7B0361 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "aniamal-adoption";
+			name = "animal-adoption";
 			productName = "aniamal-adoption";
-			productReference = 61DFC0981E48A94B0017923C /* aniamal-adoption.app */;
+			productReference = 61DFC0981E48A94B0017923C /* animal-adoption.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -101,7 +162,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 61DFC0931E48A94A0017923C /* Build configuration list for PBXProject "aniamal-adoption" */;
+			buildConfigurationList = 61DFC0931E48A94A0017923C /* Build configuration list for PBXProject "animal-adoption" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -114,7 +175,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				61DFC0971E48A94B0017923C /* aniamal-adoption */,
+				61DFC0971E48A94B0017923C /* animal-adoption */,
 			);
 		};
 /* End PBXProject section */
@@ -126,33 +187,76 @@
 			files = (
 				61DFC0A61E48A94B0017923C /* LaunchScreen.storyboard in Resources */,
 				61DFC0A31E48A94B0017923C /* Assets.xcassets in Resources */,
-				61DFC0A11E48A94B0017923C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		631C35239210ADF98D7B0361 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-aniamal-adoption/Pods-aniamal-adoption-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B1656CF1396DBD4D5D89B9AE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-aniamal-adoption/Pods-aniamal-adoption-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6D7A88971216BE48CAD5812 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		61DFC0941E48A94B0017923C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61DFC09E1E48A94B0017923C /* ViewController.swift in Sources */,
+				61DFC09E1E48A94B0017923C /* HomeViewController.swift in Sources */,
+				61DFC0B61E48CA190017923C /* Animals.swift in Sources */,
+				61DFC0AE1E48B50E0017923C /* BaseCell.swift in Sources */,
 				61DFC09C1E48A94B0017923C /* AppDelegate.swift in Sources */,
+				6184618A1E48DB860062E0FE /* ApiService.swift in Sources */,
+				61DFC0B11E48B7780017923C /* AnimalCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		61DFC09F1E48A94B0017923C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				61DFC0A01E48A94B0017923C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		61DFC0A41E48A94B0017923C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -259,12 +363,13 @@
 		};
 		61DFC0AB1E48A94B0017923C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4CC2BD5737D4B3B3081DB26 /* Pods-aniamal-adoption.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4ANE8KXCD8;
 				INFOPLIST_FILE = "aniamal-adoption/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "vanness-wu.aniamal-adoption";
+				PRODUCT_BUNDLE_IDENTIFIER = "vanness-wu.animal-adoption";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -272,12 +377,13 @@
 		};
 		61DFC0AC1E48A94B0017923C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78CDC2F20FFBC07627F21866 /* Pods-aniamal-adoption.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4ANE8KXCD8;
 				INFOPLIST_FILE = "aniamal-adoption/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "vanness-wu.aniamal-adoption";
+				PRODUCT_BUNDLE_IDENTIFIER = "vanness-wu.animal-adoption";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -286,7 +392,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		61DFC0931E48A94A0017923C /* Build configuration list for PBXProject "aniamal-adoption" */ = {
+		61DFC0931E48A94A0017923C /* Build configuration list for PBXProject "animal-adoption" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				61DFC0A81E48A94B0017923C /* Debug */,
@@ -295,13 +401,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		61DFC0AA1E48A94B0017923C /* Build configuration list for PBXNativeTarget "aniamal-adoption" */ = {
+		61DFC0AA1E48A94B0017923C /* Build configuration list for PBXNativeTarget "animal-adoption" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				61DFC0AB1E48A94B0017923C /* Debug */,
 				61DFC0AC1E48A94B0017923C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

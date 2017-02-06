@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "aniamal-adoption/ApiService.swift"
+            timestampString = "508097300.229388"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "fetchAnimals(_:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "aniamal-adoption/ApiService.swift"
+            timestampString = "508097301.746524"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "fetchAnimals(_:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "animal_adoption.ApiService.fetchAnimals (Swift.String, completion : (Swift.Array&lt;animal_adoption.Animal&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "animal-adoption"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wujianhao/Documents/project/aniamal-adoption/aniamal-adoption/ApiService.swift"
+                  timestampString = "508098000.246382"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "662">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "animal_adoption.ApiService.(fetchAnimals (Swift.String, completion : (Swift.Array&lt;animal_adoption.Animal&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "animal-adoption"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wujianhao/Documents/project/aniamal-adoption/aniamal-adoption/ApiService.swift"
+                  timestampString = "508098000.249286"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "23">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
