@@ -11,7 +11,21 @@ import  LBTAComponents
 
 class AnimalCell: UICollectionViewCell {
     
-    
+
+    var animal:Animal? {
+        didSet {
+            self.cityLabel.text = animal?.animal_area_pkid ?? ""
+            self.sexualLabel.text = "性別 \(animal?.animal_sex ?? "")"
+            self.loctionLabel.text = animal?.animal_place
+            self.spinner.startAnimating()
+            if let urlString = animal?.album_file {
+                self.animalView.loadImage(urlString: urlString, completion: {
+                    self.spinner.stopAnimating()
+                })
+            }
+        }
+        
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,10 +33,13 @@ class AnimalCell: UICollectionViewCell {
         
     }
     
+   let spinner: UIActivityIndicatorView = {
+        let aiv = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        return aiv
+    }()
     
     let animalView: CachedImageView = {
        let imageView = CachedImageView()
-        imageView.image = UIImage(named: "dog")
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
@@ -32,17 +49,14 @@ class AnimalCell: UICollectionViewCell {
     
     let cityLabel: UILabel = {
        let label = UILabel()
-        label.text = "台南市"
         return label
     }()
     let sexualLabel: UILabel = {
         let label = UILabel()
-        label.text = "性別：男"
         return label
     }()
     let loctionLabel: UILabel = {
         let label = UILabel()
-        label.text = "台南市流浪動物中途之家"
         return label
     }()
     
@@ -55,11 +69,14 @@ class AnimalCell: UICollectionViewCell {
         addSubview(cityLabel)
         addSubview(sexualLabel)
         addSubview(loctionLabel)
+        animalView.addSubview(spinner)
+        
         animalView.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, topConstant: 8, leftConstant: 8, bottomConstant: 8, rightConstant: 0, widthConstant: 84*16/9, heightConstant: 0)
         cityLabel.anchor(animalView.topAnchor, left: animalView.rightAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 0, widthConstant: 80, heightConstant: 40)
         sexualLabel.anchor(cityLabel.topAnchor, left: cityLabel.rightAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 80, heightConstant: 40)
         loctionLabel.anchor(cityLabel.bottomAnchor, left: animalView.rightAnchor, bottom: nil, right: rightAnchor, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 40)
-        
+        spinner.anchorCenterXToSuperview()
+        spinner.anchorCenterYToSuperview()
         
         
     }

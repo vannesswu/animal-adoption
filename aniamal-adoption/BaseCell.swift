@@ -11,8 +11,11 @@ import UIKit
 class BaseCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     
+    var delegateController:HomeViewController?
+    
+    
     let cellId = "BaseCellId"
-    var animals = [Animal]()
+    var animals:[Animal]?
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -21,22 +24,18 @@ class BaseCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionVi
         cv.delegate = self
         return cv
     }()
-    
-    
     func featchAnimals(){
         ApiService.shareInstatance.fetchAnimals("?$top=5000&$skip=0&$filter=animal_kind+like+狗+and+animal_place+like+台南") { (animals:[Animal]) in
             self.animals = animals
+            self.collectionView.reloadData()
+
         }
         
     }
-    
-    
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
-    }
+        }
     
     let wordLabel: UILabel = {
         let label = UILabel()
@@ -63,13 +62,12 @@ class BaseCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return animals.count
+        return animals?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AnimalCell
-        let animal = animals[indexPath.item]
-        cell.cityLabel.text = animal.animal_place
+        cell.animal = animals?[indexPath.item]
         
         return cell
     }
@@ -80,14 +78,13 @@ class BaseCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return 0
     }
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let animal = animals?[indexPath.item]{
+        delegateController?.pushDetailViewController(animal)
+        }
     
-    
-    
-    
-    
-    
+    }
     
 }

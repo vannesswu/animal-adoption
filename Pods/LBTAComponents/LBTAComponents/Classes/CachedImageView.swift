@@ -67,7 +67,9 @@ open class CachedImageView: UIImageView {
         
         guard let url = URL(string: urlString) else {
             if shouldUseEmptyImage {
-                image = emptyImage
+                image = UIImage(named: "no_image")
+                completion?()
+
             }
             return
         }

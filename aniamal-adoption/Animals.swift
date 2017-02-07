@@ -64,7 +64,11 @@ class Animal {
             self.animal_age = nil
         }
         
-        self.animal_sterilization = dict["animal_sterilization"] as? String
+        if let  sterilization = dict["animal_sterilization"] as? String {
+        self.animal_sterilization = sterilizationDict[sterilization]
+        } else {
+            self.animal_sterilization = nil
+        }
         
         self.animal_status = dict["animal_status"] as? String
         
@@ -87,7 +91,7 @@ class Animal {
 }
 
 
-var cityDict = ["2":"台北市",
+let cityDict = ["2":"台北市",
                 "12":"南投縣",
                 "3":"新北市",
                 "13":"雲林縣",
@@ -109,11 +113,11 @@ var cityDict = ["2":"台北市",
                 "21":"澎湖縣",
                 "22":"金門縣",
                 "23":"連江縣",
-                
 ]
 let sexDict = ["M":"公","F":"母"]
 let bodyDict = ["BIG":"大","MEDIUM":"中","SMALL":"小","MINI":"幼"]
 let ageDict = ["ADULT":"成犬","CHILD":"幼犬"]
+let sterilizationDict = ["T":"已絕育", "N":"未絕育", "F":"未絕育"]
 
 
 

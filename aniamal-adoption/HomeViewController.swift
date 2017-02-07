@@ -18,7 +18,10 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "動物認領養"
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
          navigationController?.navigationBar.isTranslucent = false
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+
         setupCollectionView()
         setupBarbutton()
               
@@ -37,6 +40,12 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         let searchImage = UIImage(named: "search_icon")?.withRenderingMode(.alwaysOriginal)
         let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
         navigationItem.rightBarButtonItems = [searchBarButtonItem]
+        
+        
+        let backBarButtonItem = UIBarButtonItem(title: "回前頁", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        backBarButtonItem.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.white], for: .normal)
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     
@@ -44,14 +53,20 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         
     }
     
-    
+    func pushDetailViewController(_ animal:Animal){
+        let animalDetailViewController = AnimalDetailViewController()
+        animalDetailViewController.animal = animal
+        navigationController?.pushViewController(animalDetailViewController, animated: true)
+        
+    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BaseCell
+        cell.delegateController = self
         return cell
     }
     

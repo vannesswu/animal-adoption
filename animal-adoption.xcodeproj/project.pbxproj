@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6184618A1E48DB860062E0FE /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618461891E48DB860062E0FE /* ApiService.swift */; };
+		6184618C1E49C8DB0062E0FE /* AnimalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184618B1E49C8DB0062E0FE /* AnimalDetailViewController.swift */; };
+		6184618E1E49E26D0062E0FE /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184618D1E49E26D0062E0FE /* DetailCell.swift */; };
 		61DFC09C1E48A94B0017923C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DFC09B1E48A94B0017923C /* AppDelegate.swift */; };
 		61DFC09E1E48A94B0017923C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DFC09D1E48A94B0017923C /* HomeViewController.swift */; };
 		61DFC0A31E48A94B0017923C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61DFC0A21E48A94B0017923C /* Assets.xcassets */; };
@@ -21,6 +23,8 @@
 /* Begin PBXFileReference section */
 		51049384F6230C4046F5C20C /* Pods_aniamal_adoption.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aniamal_adoption.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		618461891E48DB860062E0FE /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		6184618B1E49C8DB0062E0FE /* AnimalDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalDetailViewController.swift; sourceTree = "<group>"; };
+		6184618D1E49E26D0062E0FE /* DetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		61DFC0981E48A94B0017923C /* animal-adoption.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "animal-adoption.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61DFC09B1E48A94B0017923C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61DFC09D1E48A94B0017923C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				61DFC0AD1E48B50E0017923C /* BaseCell.swift */,
+				6184618D1E49E26D0062E0FE /* DetailCell.swift */,
 				61DFC0B01E48B7780017923C /* AnimalCell.swift */,
 			);
 			name = View;
@@ -101,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				61DFC09D1E48A94B0017923C /* HomeViewController.swift */,
+				6184618B1E49C8DB0062E0FE /* AnimalDetailViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -250,6 +256,8 @@
 				61DFC0AE1E48B50E0017923C /* BaseCell.swift in Sources */,
 				61DFC09C1E48A94B0017923C /* AppDelegate.swift in Sources */,
 				6184618A1E48DB860062E0FE /* ApiService.swift in Sources */,
+				6184618C1E49C8DB0062E0FE /* AnimalDetailViewController.swift in Sources */,
+				6184618E1E49E26D0062E0FE /* DetailCell.swift in Sources */,
 				61DFC0B11E48B7780017923C /* AnimalCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
