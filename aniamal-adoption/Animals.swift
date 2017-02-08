@@ -15,6 +15,7 @@ class Animal {
     var animal_subid: String?
     var animal_area_pkid: String?
     var animal_place:String?
+    var shelter_name:String?
     var animal_kind:String?
     var animal_sex:String?
     var animal_bodytype:String?
@@ -41,6 +42,8 @@ class Animal {
         }
         
         self.animal_place = dict["animal_place"] as? String
+        
+        self.shelter_name = dict["shelter_name"] as? String
         
         self.animal_kind = dict["animal_kind"] as? String
         
@@ -91,7 +94,7 @@ class Animal {
 }
 
 
-let cityDict = ["2":"台北市",
+let cityDict = ["2":"臺北市",
                 "12":"南投縣",
                 "3":"新北市",
                 "13":"雲林縣",
@@ -107,19 +110,42 @@ let cityDict = ["2":"台北市",
                 "18":"屏東縣",
                 "9":"苗栗縣",
                 "19":"花蓮縣",
-                "10":"台中市",
-                "20":"台東縣",
+                "10":"臺中市",
+                "20":"臺東縣",
                 "11":"彰化縣",
                 "21":"澎湖縣",
                 "22":"金門縣",
                 "23":"連江縣",
 ]
+
+
+
+
 let sexDict = ["M":"公","F":"母"]
-let bodyDict = ["BIG":"大","MEDIUM":"中","SMALL":"小","MINI":"幼"]
-let ageDict = ["ADULT":"成犬","CHILD":"幼犬"]
+let bodyDict = ["BIG":"大型","MEDIUM":"中型","SMALL":"小型","MINI":"迷你型"]
+let ageDict = ["ADULT":"成年","CHILD":"幼年"]
 let sterilizationDict = ["T":"已絕育", "N":"未絕育", "F":"未絕育"]
 
+let cityArray = ["不限","臺北市","新北市","基隆市","宜蘭縣","桃園市","新竹縣","新竹市","苗栗縣","臺中市","彰化縣","南投縣","雲林縣","嘉義縣","嘉義市","台南市","高雄市","屏東縣","花蓮縣","臺東縣","澎湖縣","金門縣","連江縣"]
+let kindArray = ["不限","狗", "貓"]
+let bodyArray = ["不限","大型", "中型", "小型", "迷你型"]
+let ageArray = ["不限","成年", "幼年"]
+let colorArray = ["不限","白色", "黑色", "棕色", "黃色", "虎斑", "花色", "其他"]
+let sexArray = ["不限", "公", "母"]
 
+let searchOptions = ["區域", "分類", "體型", "年紀", "毛色", "性別"]
+let searchDict = ["區域":cityArray, "分類":kindArray, "體型":bodyArray, "年紀":ageArray, "毛色":colorArray, "性別":sexArray]
+
+let reverseCityDict:[String:String] = {
+    var dict = [String:String]()
+    for (key,value) in cityDict {
+        dict[value] = key
+    }
+    return dict
+}()
+let reversesexDict = ["公":"M","母":"F"]
+let reversebodyDict = ["大型":"BIG","中型":"MEDIUM","小型":"SMALL","迷你型":"MINI"]
+let reverseageDict = ["成年":"ADULT","幼年":"CHILD"]
 
 
 

@@ -52,7 +52,7 @@ class DetailCell: UICollectionViewCell {
                
             case 9:
                 keyLabel.text = "所屬單位"
-                valueLabel.text = animal?.animal_place ?? ""
+                valueLabel.text = animal?.shelter_name ?? ""
             case 10:
                 keyLabel.text = "地址"
                 valueLabel.text = animal?.shelter_address ?? ""

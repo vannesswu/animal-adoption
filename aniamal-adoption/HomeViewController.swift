@@ -14,6 +14,13 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     let cellId = "cellId"
     let headerId = "headerId"
     let footerId = "footerId"
+    var searchConditions:[String:String?] = ["區域":"台南市", "分類":"狗", "體型":nil, "年紀":nil, "毛色":nil, "性別":nil] {
+        
+        didSet{
+            self.collectionView?.reloadData()
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,8 +56,16 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     
+    lazy var searchLauncher: SearchLauncher = {
+        let launcher = SearchLauncher()
+        return launcher
+    }()
+    
+    
+    
     func handleSearch(){
-        
+        searchLauncher.conditionDelegate = self
+        searchLauncher.showSearching()
     }
     
     func pushDetailViewController(_ animal:Animal){
@@ -67,6 +82,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BaseCell
         cell.delegateController = self
+        
         return cell
     }
     

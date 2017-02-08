@@ -16,7 +16,7 @@ class AnimalCell: UICollectionViewCell {
         didSet {
             self.cityLabel.text = animal?.animal_area_pkid ?? ""
             self.sexualLabel.text = "性別 \(animal?.animal_sex ?? "")"
-            self.loctionLabel.text = animal?.animal_place
+            self.loctionLabel.text = animal?.shelter_name ?? ""
             self.spinner.startAnimating()
             if let urlString = animal?.album_file {
                 self.animalView.loadImage(urlString: urlString, completion: {

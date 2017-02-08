@@ -11,8 +11,16 @@ import UIKit
 class BaseCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     
-    var delegateController:HomeViewController?
-    
+    var delegateController:HomeViewController? {
+        didSet {
+            self.searchConditions = (delegateController?.searchConditions)!
+        }
+    }
+    var searchConditions:[String:String?] = ["區域":"台南市", "分類":"狗", "體型":nil, "年紀":nil, "毛色":nil, "性別":nil] {
+        didSet {
+            self.featchAnimals(dict: searchConditions)
+        }
+    }
     
     let cellId = "BaseCellId"
     var animals:[Animal]?
@@ -24,8 +32,10 @@ class BaseCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionVi
         cv.delegate = self
         return cv
     }()
-    func featchAnimals(){
-        ApiService.shareInstatance.fetchAnimals("?$top=5000&$skip=0&$filter=animal_kind+like+狗+and+animal_place+like+台南") { (animals:[Animal]) in
+    func featchAnimals(dict:[String:String?]){
+        
+        let parameters = ApiService.shareInstatance.transDictToUrlFormat(dict)
+        ApiService.shareInstatance.fetchAnimals(parameters) { (animals:[Animal]) in
             self.animals = animals
             self.collectionView.reloadData()
 
@@ -43,7 +53,7 @@ class BaseCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionVi
     }()
     
     func setupViews() {
-        featchAnimals()
+        featchAnimals(dict:searchConditions)
         addSubview(collectionView)
         addConstraintsWithFormat("H:|[v0]|", views: collectionView)
         addConstraintsWithFormat("V:|[v0]|", views: collectionView)
