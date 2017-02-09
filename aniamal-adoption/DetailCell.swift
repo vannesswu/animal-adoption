@@ -92,6 +92,7 @@ class DetailCell: UICollectionViewCell {
     let valueTextView:LBTATextView = {
      let textView = LBTATextView()
         textView.font = UIFont.systemFont(ofSize: 15)
+        textView.backgroundColor = .clear
     return textView
     }()
     
@@ -104,7 +105,7 @@ class DetailCell: UICollectionViewCell {
         addSubview(valueLabel)
         
         keyLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, topConstant: 8, leftConstant: 8, bottomConstant: 0, rightConstant: 0, widthConstant: 80, heightConstant: 0)
-        valueLabel.anchor(keyLabel.topAnchor, left: keyLabel.rightAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 8, widthConstant: 0, heightConstant: 0)
+        valueLabel.anchor(keyLabel.topAnchor, left: keyLabel.rightAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: 0)
         
         
         

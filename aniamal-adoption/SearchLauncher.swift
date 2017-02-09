@@ -80,7 +80,9 @@ class SearchLauncher: NSObject {
         
     }
     func performSearch() {
+     conditionDelegate?.performSearch = true
      conditionDelegate?.searchConditions = self.searchConditions
+    
      handleDismiss()
         
         

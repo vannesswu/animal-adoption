@@ -14,10 +14,21 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     let cellId = "cellId"
     let headerId = "headerId"
     let footerId = "footerId"
+    let menuBarHeight:CGFloat = 70
+    var performSearch:Bool = false
+    var resultCount:Int? {
+        didSet {
+            menuBar.searchConditions = searchConditions
+            menuBar.result = resultCount
+        }
+    }
     var searchConditions:[String:String?] = ["區域":"台南市", "分類":"狗", "體型":nil, "年紀":nil, "毛色":nil, "性別":nil] {
         
         didSet{
+            if performSearch {
             self.collectionView?.reloadData()
+                performSearch = false
+            }
             
         }
     }
@@ -29,8 +40,9 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
          navigationController?.navigationBar.isTranslucent = false
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
 
-        setupCollectionView()
         setupBarbutton()
+        setupMenuBar()
+        setupCollectionView()
               
     }
     func setupCollectionView(){
@@ -40,7 +52,10 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         }
         collectionView?.backgroundColor = .white
         collectionView?.register(BaseCell.self, forCellWithReuseIdentifier: cellId)
-        
+        collectionView?.contentInset = UIEdgeInsetsMake(56+menuBarHeight , 0, 0, 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(56+menuBarHeight, 0, 0, 0)
+        collectionView?.isPagingEnabled = true
+
     }
     
     func setupBarbutton(){
@@ -55,6 +70,22 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         navigationItem.backBarButtonItem = backBarButtonItem
     }
     
+    lazy var menuBar:MenuBar = {
+       let mb = MenuBar()
+        mb.homeViewController = self
+        return mb
+    }()
+    func setupMenuBar() {
+        let bgView = UIView()
+        bgView.backgroundColor = UIColor.red
+        view.addSubview(bgView)
+        view.addSubview(menuBar)
+        bgView.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: menuBarHeight)
+        menuBar.anchor(bgView.topAnchor, left: bgView.leftAnchor, bottom: nil, right: bgView.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: menuBarHeight)
+        
+        
+    }
+    
     
     lazy var searchLauncher: SearchLauncher = {
         let launcher = SearchLauncher()
@@ -63,10 +94,28 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     
     
+    
+    
     func handleSearch(){
         searchLauncher.conditionDelegate = self
         searchLauncher.showSearching()
     }
+    
+    func scrollToMenuIndex(_ menuIndex: Int) {
+        let indexPath = IndexPath(item: menuIndex, section: 0)
+        collectionView?.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition(), animated: true)
+        
+        //setTitleForIndex(menuIndex)
+    }
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+        let index = targetContentOffset.pointee.x / view.frame.width
+        
+        let indexPath = IndexPath(item: Int(index), section: 0)
+        menuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionViewScrollPosition())
+        
+        }
+
     
     func pushDetailViewController(_ animal:Animal){
         let animalDetailViewController = AnimalDetailViewController()
@@ -74,6 +123,13 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         navigationController?.pushViewController(animalDetailViewController, animated: true)
         
     }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+       menuBar.horizontalBarLeftAnchorConstraint?.constant = scrollView.contentOffset.x / 2
+        
+    }
+    
+    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2

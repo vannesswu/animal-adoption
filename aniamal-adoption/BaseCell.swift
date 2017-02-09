@@ -37,6 +37,8 @@ class BaseCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionVi
         let parameters = ApiService.shareInstatance.transDictToUrlFormat(dict)
         ApiService.shareInstatance.fetchAnimals(parameters) { (animals:[Animal]) in
             self.animals = animals
+            self.delegateController?.searchConditions = self.searchConditions
+            self.delegateController?.resultCount = animals.count
             self.collectionView.reloadData()
 
         }
@@ -53,7 +55,7 @@ class BaseCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionVi
     }()
     
     func setupViews() {
-        featchAnimals(dict:searchConditions)
+  //      featchAnimals(dict:searchConditions)
         addSubview(collectionView)
         addConstraintsWithFormat("H:|[v0]|", views: collectionView)
         addConstraintsWithFormat("V:|[v0]|", views: collectionView)
