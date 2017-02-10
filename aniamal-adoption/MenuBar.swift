@@ -60,6 +60,8 @@ class MenuBar: UIView {
         collectionView.register(MenuBarCell.self, forCellWithReuseIdentifier: cellId)
         addSubview(collectionView)
         collectionView.anchor(resultLabel.bottomAnchor, left: resultLabel.leftAnchor, bottom: bottomAnchor, right: resultLabel.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        let selectedIndexPath = IndexPath(item: 0, section: 0)
+        collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: UICollectionViewScrollPosition())
         
     }
     var horizontalBarLeftAnchorConstraint: NSLayoutConstraint?

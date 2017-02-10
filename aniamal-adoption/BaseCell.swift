@@ -11,6 +11,7 @@ import UIKit
 class BaseCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     
+    var favoriteAnimals = [Animal]()
     var delegateController:HomeViewController? {
         didSet {
             self.searchConditions = (delegateController?.searchConditions)!
@@ -18,12 +19,26 @@ class BaseCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionVi
     }
     var searchConditions:[String:String?] = ["區域":"台南市", "分類":"狗", "體型":nil, "年紀":nil, "毛色":nil, "性別":nil] {
         didSet {
-            self.featchAnimals(dict: searchConditions)
+            if self.cellIndex == 0 {
+                self.featchAnimals(dict: searchConditions)
+            }
         }
     }
     
     let cellId = "BaseCellId"
-    var animals:[Animal]?
+    var cellIndex:Int = 0 {
+        didSet {
+            let userDefault = UserDefaults.standard
+            favoriteAnimals = NSKeyedUnarchiver.unarchiveObject(with: (userDefault.object(forKey: "favoriteAnimals") as! NSData) as Data) as! [Animal]
+           self.animals = favoriteAnimals
+        }
+    }
+    
+    var animals:[Animal]? = nil {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -32,14 +47,15 @@ class BaseCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionVi
         cv.delegate = self
         return cv
     }()
+    
     func featchAnimals(dict:[String:String?]){
         
         let parameters = ApiService.shareInstatance.transDictToUrlFormat(dict)
         ApiService.shareInstatance.fetchAnimals(parameters) { (animals:[Animal]) in
+            
             self.animals = animals
             self.delegateController?.searchConditions = self.searchConditions
             self.delegateController?.resultCount = animals.count
-            self.collectionView.reloadData()
 
         }
         
@@ -47,7 +63,7 @@ class BaseCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionVi
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
-        }
+    }
     
     let wordLabel: UILabel = {
         let label = UILabel()
@@ -80,7 +96,7 @@ class BaseCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AnimalCell
         cell.animal = animals?[indexPath.item]
-        
+
         return cell
     }
     

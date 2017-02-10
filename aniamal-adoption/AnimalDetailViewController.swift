@@ -14,7 +14,12 @@ class AnimalDetailViewController: UIViewController {
     let cellId = "DetailcellId"
     let headerId = "DetailheaderId"
     let footerId = "DetailfooterId"
-    
+    var favoriteAnimals = [Animal]()
+    var favorite:Bool = false {
+        didSet {
+            self.navigationItem.rightBarButtonItem?.tintColor = favorite ? UIColor.white : UIColor(r: 91, g: 14, b: 13)
+        }
+    }
 
     var animal:Animal?
     
@@ -46,10 +51,43 @@ class AnimalDetailViewController: UIViewController {
         navigationItem.backBarButtonItem = backBarButtonItem
 
         
-        
+        setupBarbutton()
         setupImageView()
         setupCollectionView()
         }
+    func setupBarbutton(){
+        let favoriteImage = UIImage(named: "love-48")?.withRenderingMode(.alwaysTemplate)
+        let favoriteBarButtonItem = UIBarButtonItem(image: favoriteImage, style: .plain, target: self, action: #selector(selectToFavorite))
+        navigationItem.rightBarButtonItems = [favoriteBarButtonItem]
+        favorite = (animal?.favorite)!
+    }
+    func selectToFavorite(){
+        animal?.favorite = !(animal?.favorite)!
+        favorite = (animal?.favorite)!
+        
+        let userDefault = UserDefaults.standard
+        
+        if userDefault.object(forKey: "favoriteAnimals") as? [Animal] == nil {
+            
+        }
+        favoriteAnimals = NSKeyedUnarchiver.unarchiveObject(with: (userDefault.object(forKey: "favoriteAnimals") as! NSData) as Data) as? [Animal] ?? [Animal]()
+        if favorite {
+            favoriteAnimals.append(animal!)
+        } else {
+            favoriteAnimals = favoriteAnimals.filter({ (animals:Animal) -> Bool in
+                animals.animal_id != animal?.animal_id
+            })
+        }
+        userDefault.set(NSKeyedArchiver.archivedData(withRootObject: favoriteAnimals), forKey: "favoriteAnimals")
+        userDefault.synchronize()
+        let array = NSKeyedUnarchiver.unarchiveObject(with: (userDefault.object(forKey: "favoriteAnimals") as! NSData) as Data) as! [Animal]
+      
+        
+    }
+  
+    
+    
+    
     
     func setupImageView(){
         let imageHeight = view.frame.size.height/3

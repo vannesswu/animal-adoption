@@ -110,11 +110,20 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
         let index = targetContentOffset.pointee.x / view.frame.width
-        
         let indexPath = IndexPath(item: Int(index), section: 0)
+        let cell = collectionView?.cellForItem(at: indexPath) as! BaseCell
+        
         menuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionViewScrollPosition())
         
+        // pass favorite datasource to basecell
+        if indexPath.item == 1 {
+//            let userDefault = UserDefaults.standard
+//            let animalArray = NSKeyedUnarchiver.unarchiveObject(with: (userDefault.object(forKey: "favoriteAnimals") as! NSData) as Data) as! [Animal]
+//            cell.animals = animalArray
         }
+    }
+    
+    
 
     
     func pushDetailViewController(_ animal:Animal){
@@ -137,7 +146,10 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BaseCell
+        cell.cellIndex = indexPath.item
         cell.delegateController = self
+
+        
         
         return cell
     }

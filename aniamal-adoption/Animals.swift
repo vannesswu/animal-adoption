@@ -9,7 +9,7 @@
 import Foundation
 
 
-class Animal {
+class Animal: NSObject, NSCoding {
     
     var animal_id: String?
     var animal_subid: String?
@@ -28,65 +28,91 @@ class Animal {
     var shelter_tel:String?
     var album_file:String?
     var animal_remark:String?
+    var favorite:Bool = false
+    let propertyArray = ["animal_id","animal_subid","animal_area_pkid","animal_place","shelter_name","animal_kind","animal_sex","animal_bodytype","animal_colour","animal_age","animal_sterilization","animal_status","animal_opendate","shelter_address","shelter_tel","album_file","animal_remark","favorite"]
     
     init(_ dict:NSDictionary) {
         
         self.animal_id = dict["animal_id"] as? String
-        
         self.animal_subid = dict["animal_subid"] as? String
-        
         if let city = dict["animal_area_pkid"] as? String{
         self.animal_area_pkid = cityDict[city]
         }else {
         self.animal_area_pkid = nil
         }
-        
         self.animal_place = dict["animal_place"] as? String
-        
         self.shelter_name = dict["shelter_name"] as? String
-        
         self.animal_kind = dict["animal_kind"] as? String
-        
         if let sex = dict["animal_sex"] as? String {
         self.animal_sex = sexDict[sex]
         } else {
          self.animal_sex = nil
         }
-        
         if let body = dict["animal_bodytype"] as? String {
         self.animal_bodytype = bodyDict[body]
         } else {
             self.animal_bodytype = nil
         }
-        
         self.animal_colour = dict["animal_colour"] as? String
-        
         if let age = dict["animal_age"] as? String {
         self.animal_age = ageDict[age]
         } else {
             self.animal_age = nil
         }
-        
         if let  sterilization = dict["animal_sterilization"] as? String {
         self.animal_sterilization = sterilizationDict[sterilization]
         } else {
             self.animal_sterilization = nil
         }
-        
         self.animal_status = dict["animal_status"] as? String
-        
         self.animal_opendate = dict["animal_opendate"] as? String
-        
         self.shelter_address = dict["shelter_address"] as? String
-        
         self.shelter_tel = dict["shelter_tel"] as? String
-        
         self.album_file = dict["album_file"] as? String
-        
         self.animal_remark = dict["animal_remark"] as? String
 
+    }
+    required init?(coder aDecoder: NSCoder) {
         
+        self.animal_id = aDecoder.decodeObject(forKey: "animal_id") as? String
+        self.animal_subid = aDecoder.decodeObject(forKey: "animal_subid") as? String
+        self.animal_area_pkid = aDecoder.decodeObject(forKey: "animal_area_pkid") as? String
+        self.animal_place = aDecoder.decodeObject(forKey: "animal_place") as? String
+        self.shelter_name = aDecoder.decodeObject(forKey: "shelter_name") as? String
+        self.animal_kind = aDecoder.decodeObject(forKey: "animal_kind") as? String
+        self.animal_sex = aDecoder.decodeObject(forKey: "animal_sex") as? String
+        self.animal_bodytype = aDecoder.decodeObject(forKey: "animal_bodytype") as? String
+        self.animal_colour = aDecoder.decodeObject(forKey: "animal_colour") as? String;
+        self.animal_age = aDecoder.decodeObject(forKey: "animal_age") as? String;
+        self.animal_sterilization = aDecoder.decodeObject(forKey: "animal_sterilization") as? String
+        self.animal_status = aDecoder.decodeObject(forKey: "animal_status") as? String
+        self.animal_opendate = aDecoder.decodeObject(forKey: "animal_opendate") as? String
+        self.shelter_address = aDecoder.decodeObject(forKey: "shelter_address") as? String
+        self.shelter_tel = aDecoder.decodeObject(forKey: "shelter_tel") as? String
+        self.album_file = aDecoder.decodeObject(forKey: "album_file") as? String
+        self.animal_remark = aDecoder.decodeObject(forKey: "animal_remark") as? String
+        self.favorite = aDecoder.decodeBool(forKey: "favorite") as Bool
         
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.animal_id, forKey: "animal_id")
+        aCoder.encode(self.animal_subid, forKey: "animal_subid")
+        aCoder.encode(self.animal_area_pkid, forKey: "animal_area_pkid")
+        aCoder.encode(self.animal_place, forKey: "animal_place")
+        aCoder.encode(self.shelter_name, forKey: "shelter_name")
+        aCoder.encode(self.animal_kind, forKey: "animal_kind")
+        aCoder.encode(self.animal_sex, forKey: "animal_sex")
+        aCoder.encode(self.animal_bodytype, forKey: "animal_bodytype")
+        aCoder.encode(self.animal_colour, forKey: "animal_colour")
+        aCoder.encode(self.animal_age, forKey: "animal_age")
+        aCoder.encode(self.animal_sterilization, forKey: "animal_sterilization")
+        aCoder.encode(self.animal_status, forKey: "animal_status")
+        aCoder.encode(self.shelter_tel, forKey: "shelter_tel")
+        aCoder.encode(self.shelter_address, forKey: "shelter_address")
+        aCoder.encode(self.album_file, forKey: "album_file")
+        aCoder.encode(self.animal_remark, forKey: "animal_remark")
+        aCoder.encode(self.favorite, forKey: "favorite")
         
     }
     
