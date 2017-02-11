@@ -30,10 +30,15 @@ class SearchCell: UICollectionViewCell {
         let tableView = UITableView(frame: .zero)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellId)
+        tableView.register(SearchOptionCell.self, forCellReuseIdentifier: self.cellId)
+        let selectedIndexPath = IndexPath(row: 0, section: 0)
+        tableView.selectRow(at: selectedIndexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
         
         return tableView
     }()
+    
+    var blackView = UIView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.clipsToBounds = false
@@ -46,10 +51,15 @@ class SearchCell: UICollectionViewCell {
     }()
     lazy var optionButton:UIButton = {
         let button = UIButton()
+        button.setTitleColor(UIColor.black, for: .normal)
         button.addTarget(self, action: #selector(showOptions), for: .touchUpInside)
         return button
     }()
-    
+    let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(r: 230, g: 230, b: 230)
+        return view
+    }()
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,11 +67,14 @@ class SearchCell: UICollectionViewCell {
     }
     
     func setupViews(){
-        backgroundColor = UIColor.blue
+    //    backgroundColor = UIColor.darkGray
         addSubview(categorylabel)
         addSubview(optionButton)
+        addSubview(separatorView)
         categorylabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 40, heightConstant: 0)
-        optionButton.anchor(categorylabel.topAnchor, left: categorylabel.rightAnchor, bottom: categorylabel.bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        optionButton.anchor(categorylabel.topAnchor, left: categorylabel.rightAnchor, bottom: categorylabel.bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 1, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        separatorView.anchor(nil, left: optionButton.leftAnchor, bottom: bottomAnchor, right: optionButton.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 1)
+        
         
     }
     
@@ -75,20 +88,54 @@ class SearchCell: UICollectionViewCell {
         }
         
         if let window = UIApplication.shared.keyWindow {
-        globalTableView.append(optionTabeleView)
-        window.addSubview(optionTabeleView)
-        let frame = optionButton.superview?.convert(optionButton.frame, to: window)
-        var estimatedHeight = CGFloat(cellHeight * optionArray!.count)
+            blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+            blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
+            
+            globalTableView.append(optionTabeleView)
+            window.addSubview(blackView)
+            window.addSubview(optionTabeleView)
+            blackView.frame = window.frame
+            blackView.alpha = 0
+            
+            
+            let frame = optionButton.superview?.convert(optionButton.frame, to: window)
+            var estimatedHeight = CGFloat(cellHeight * optionArray!.count)
             if estimatedHeight > (window.bounds.height - (frame?.origin.y)!) {
                 estimatedHeight = (window.bounds.height - (frame?.origin.y)!)
             }
-        optionTabeleView.frame = CGRect(x: (frame?.origin.x)!, y: (frame?.origin.y)!, width: optionButton.frame.width, height: 0)
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.optionTabeleView.frame = CGRect(x: (frame?.origin.x)!, y: (frame?.origin.y)!, width: self.optionButton.frame.width, height: estimatedHeight)
-        }, completion: nil )
-        
+            optionTabeleView.frame = CGRect(x: (frame?.origin.x)!, y: (frame?.origin.y)!, width: optionButton.frame.width, height: 0)
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                self.blackView.alpha = 1
+                self.optionTabeleView.frame = CGRect(x: (frame?.origin.x)!, y: (frame?.origin.y)!, width: self.optionButton.frame.width, height: estimatedHeight)
+            }, completion: nil )
+           
+            // MARK: manually assign cell.isselected
+            for (index ,element) in optionArray!.enumerated() {
+                let selectedIndexPath = IndexPath(row: index, section: 0)
+                let cell = optionTabeleView.cellForRow(at: selectedIndexPath)
+                if optionButton.currentTitle == element {
+                optionTabeleView.selectRow(at: selectedIndexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
+                    cell?.isSelected = true
+                } else {
+                    cell?.isSelected = false
+                }
+                
+            }
+            
         }
     }
+    
+    
+    func handleDismiss() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            
+            self.blackView.alpha = 0
+            self.optionTabeleView.removeFromSuperview()
+            
+        }) { (completed: Bool) in }
+        
+    }
+    
     
     func performSearch() {
         
@@ -114,9 +161,8 @@ extension SearchCell: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as UITableViewCell
-        cell.textLabel?.text = optionArray?[indexPath.row]
-        cell.textLabel?.textAlignment = .center
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! SearchOptionCell
+        cell.titleLabel.text = optionArray?[indexPath.row]
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -127,14 +173,12 @@ extension SearchCell: UITableViewDelegate, UITableViewDataSource {
         optionButton.setTitle(optionArray?[indexPath.row], for: .normal)
         globalTableView.removeLast()
         optionTabeleView.removeFromSuperview()
-
-        
+        self.blackView.alpha = 0
             storeConditions((optionArray?[indexPath.row])!)
         
-        
-        
-        
     }
+
+    
     func storeConditions(_ value:String) {
         if value == "不限" {
        conditionDelegate?.searchConditions[titleKey!] = nil

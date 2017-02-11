@@ -21,12 +21,23 @@ class AnimalDetailViewController: UIViewController {
         }
     }
 
-    var animal:Animal?
+    var animal:Animal? {
+        didSet {
+            favoriteAnimals = UserDefaults.fetchFavoriteAnimals()
+            if favoriteAnimals.count != 0 {
+                for animals in favoriteAnimals {
+                    if animals.animal_id == animal?.animal_id {
+                        animal?.favorite = animals.favorite
+                    }
+                }
+            }
+        }
+    }
     
     let animalView: CachedImageView = {
         let imageView = CachedImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 20
+//        imageView.layer.cornerRadius = 20
         imageView.clipsToBounds = true
         
         return imageView
@@ -56,7 +67,7 @@ class AnimalDetailViewController: UIViewController {
         setupCollectionView()
         }
     func setupBarbutton(){
-        let favoriteImage = UIImage(named: "love-48")?.withRenderingMode(.alwaysTemplate)
+        let favoriteImage = UIImage(named: "love-58")?.withRenderingMode(.alwaysTemplate)
         let favoriteBarButtonItem = UIBarButtonItem(image: favoriteImage, style: .plain, target: self, action: #selector(selectToFavorite))
         navigationItem.rightBarButtonItems = [favoriteBarButtonItem]
         favorite = (animal?.favorite)!
@@ -64,13 +75,7 @@ class AnimalDetailViewController: UIViewController {
     func selectToFavorite(){
         animal?.favorite = !(animal?.favorite)!
         favorite = (animal?.favorite)!
-        
-        let userDefault = UserDefaults.standard
-        
-        if userDefault.object(forKey: "favoriteAnimals") as? [Animal] == nil {
-            
-        }
-        favoriteAnimals = NSKeyedUnarchiver.unarchiveObject(with: (userDefault.object(forKey: "favoriteAnimals") as! NSData) as Data) as? [Animal] ?? [Animal]()
+        favoriteAnimals = UserDefaults.fetchFavoriteAnimals()
         if favorite {
             favoriteAnimals.append(animal!)
         } else {
@@ -78,21 +83,48 @@ class AnimalDetailViewController: UIViewController {
                 animals.animal_id != animal?.animal_id
             })
         }
+        let userDefault = UserDefaults.standard
         userDefault.set(NSKeyedArchiver.archivedData(withRootObject: favoriteAnimals), forKey: "favoriteAnimals")
         userDefault.synchronize()
-        let array = NSKeyedUnarchiver.unarchiveObject(with: (userDefault.object(forKey: "favoriteAnimals") as! NSData) as Data) as! [Animal]
-      
-        
+        startFavoriteAnimate()
     }
-  
-    
-    
+    // MARK: handle select animation
+    func startFavoriteAnimate() {
+        if let window = UIApplication.shared.keyWindow {
+            let animateView = UIImageView()
+            window.addSubview(animateView)
+            //    animalView.alpha = 0
+            let frame = animalView.superview?.convert(animalView.frame, to: window)
+            animateView.image = animalView.image
+            if (animal?.favorite)! {
+                animateView.frame = frame!
+                // bad method
+                UIView.animate(withDuration: 0.8, delay: 0, options: .curveEaseInOut, animations: {
+                    animateView.frame = CGRect(x: window.frame.width-30, y: 40, width: 0, height: 0)
+                    animateView.alpha = 0
+                }, completion: {( bool:Bool) in
+                    if bool { animateView.removeFromSuperview() }
+                })
+
+            } else {
+                animateView.frame = CGRect(x: window.frame.width-30, y: 40, width: 0, height: 0)
+                animateView.alpha = 0
+                // bad method
+                UIView.animate(withDuration: 0.8, delay: 0, options: .curveEaseInOut, animations: {
+                    animateView.frame = frame!
+                    animateView.alpha = 1
+                }, completion:{( bool:Bool) in
+                    if bool { animateView.removeFromSuperview() }
+            })
+          }
+        }
+    }
     
     
     func setupImageView(){
         let imageHeight = view.frame.size.height/3
         view.addSubview(animalView)
-        animalView.anchor(self.view.topAnchor, left: self.view.leftAnchor, bottom: nil, right: self.view.rightAnchor, topConstant: 10, leftConstant: 10, bottomConstant: 0, rightConstant: 10, widthConstant: 0, heightConstant: imageHeight)
+        animalView.anchor(self.view.topAnchor, left: self.view.leftAnchor, bottom: nil, right: self.view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: imageHeight)
         if let urlString = animal?.album_file {
         animalView.loadImage(urlString: urlString)
         }

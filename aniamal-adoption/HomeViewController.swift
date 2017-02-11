@@ -11,9 +11,8 @@ import LBTAComponents
 
 class HomeViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    let cellId = "cellId"
-    let headerId = "headerId"
-    let footerId = "footerId"
+    let animalResultcellId = "animalResultCellId"
+    let favoriteAnimalCellId = "favoriteAnimalCellId"
     let menuBarHeight:CGFloat = 70
     var performSearch:Bool = false
     var resultCount:Int? {
@@ -29,8 +28,13 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
             self.collectionView?.reloadData()
                 performSearch = false
             }
-            
         }
+    }
+    var conut = 0
+    override func viewWillAppear(_ animated: Bool) {
+        
+        collectionView?.reloadData()
+       
     }
     
     override func viewDidLoad() {
@@ -51,7 +55,8 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
             flowLayout.minimumLineSpacing = 0
         }
         collectionView?.backgroundColor = .white
-        collectionView?.register(BaseCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(AnimalResultCell.self, forCellWithReuseIdentifier: animalResultcellId)
+        collectionView?.register(FavoriteAnimalCell.self, forCellWithReuseIdentifier: favoriteAnimalCellId)
         collectionView?.contentInset = UIEdgeInsetsMake(56+menuBarHeight , 0, 0, 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(56+menuBarHeight, 0, 0, 0)
         collectionView?.isPagingEnabled = true
@@ -77,7 +82,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     }()
     func setupMenuBar() {
         let bgView = UIView()
-        bgView.backgroundColor = UIColor.red
+        bgView.backgroundColor = UIColor.mainBlue
         view.addSubview(bgView)
         view.addSubview(menuBar)
         bgView.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: menuBarHeight)
@@ -99,32 +104,37 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     func handleSearch(){
         searchLauncher.conditionDelegate = self
         searchLauncher.showSearching()
+        // move to AnimalResultCell
+        let indexPath = IndexPath(item: 0, section: 0)
+        scrollToMenuIndex(0)
+        menuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionViewScrollPosition())
     }
     
     func scrollToMenuIndex(_ menuIndex: Int) {
         let indexPath = IndexPath(item: menuIndex, section: 0)
         collectionView?.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition(), animated: true)
         
-        //setTitleForIndex(menuIndex)
+        setTitleForIndex(indexPath)
     }
+    
+    fileprivate func setTitleForIndex(_ index: IndexPath) {
+        if index.item == 0 {
+            self.menuBar.resultLabel.text = "\(self.menuBar.searchConditions["區域"]! ?? "")共有\(self.menuBar.result ?? 0)筆資料"
+        } else {
+       self.menuBar.resultLabel.text = "收藏共有\(UserDefaults.fetchFavoriteAnimals().count)筆資料"
+        }
+        
+    }
+    
+    
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
         let index = targetContentOffset.pointee.x / view.frame.width
         let indexPath = IndexPath(item: Int(index), section: 0)
-        let cell = collectionView?.cellForItem(at: indexPath) as! BaseCell
-        
         menuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionViewScrollPosition())
-        
-        // pass favorite datasource to basecell
-        if indexPath.item == 1 {
-//            let userDefault = UserDefaults.standard
-//            let animalArray = NSKeyedUnarchiver.unarchiveObject(with: (userDefault.object(forKey: "favoriteAnimals") as! NSData) as Data) as! [Animal]
-//            cell.animals = animalArray
-        }
-    }
-    
-    
+        setTitleForIndex(indexPath)
 
+    }
     
     func pushDetailViewController(_ animal:Animal){
         let animalDetailViewController = AnimalDetailViewController()
@@ -145,11 +155,19 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BaseCell
+        
+        var cell:AnimalResultCell
+        
+        if indexPath.item == 0 {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: animalResultcellId, for: indexPath) as! AnimalResultCell
+            
+        } else {
+             cell = collectionView.dequeueReusableCell(withReuseIdentifier: favoriteAnimalCellId, for: indexPath) as! FavoriteAnimalCell
+            cell.animals = UserDefaults.fetchFavoriteAnimals()
+        }
+        
         cell.cellIndex = indexPath.item
         cell.delegateController = self
-
-        
         
         return cell
     }

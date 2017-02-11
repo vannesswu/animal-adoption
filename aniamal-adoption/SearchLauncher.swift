@@ -24,7 +24,7 @@ class SearchLauncher: NSObject {
     let blackView = UIView()
     let headerView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.red
+        view.backgroundColor = UIColor.mainBlue
         return view
     }()
     let SearchView: UIView = {
@@ -35,7 +35,7 @@ class SearchLauncher: NSObject {
     lazy var performButton:UIButton = {
         let button = UIButton()
         button.setTitle("搜尋", for: .normal)
-        button.backgroundColor = UIColor.darkGray
+        button.backgroundColor = UIColor.mainBlue
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(performSearch), for: .touchUpInside)
         return button
@@ -109,7 +109,7 @@ class SearchLauncher: NSObject {
     
     func setupHeaderView() {
         SearchView.addSubview(headerView)
-        headerView.anchor(SearchView.topAnchor, left: SearchView.leftAnchor, bottom: nil, right: SearchView.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 80)
+        headerView.anchor(SearchView.topAnchor, left: SearchView.leftAnchor, bottom: nil, right: SearchView.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 44+20+70)
         let titleLabel = UILabel()
         titleLabel.text = "設定搜尋條件"
         titleLabel.textColor = UIColor.white

@@ -8,10 +8,11 @@
 
 import UIKit
 
-class BaseCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class AnimalResultCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     
     var favoriteAnimals = [Animal]()
+    var oldSearchConditions:[String:String?] = [:]
     var delegateController:HomeViewController? {
         didSet {
             self.searchConditions = (delegateController?.searchConditions)!
@@ -19,20 +20,17 @@ class BaseCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionVi
     }
     var searchConditions:[String:String?] = ["區域":"台南市", "分類":"狗", "體型":nil, "年紀":nil, "毛色":nil, "性別":nil] {
         didSet {
-            if self.cellIndex == 0 {
+            if self.cellIndex == 0, oldSearchConditions != searchConditions {
                 self.featchAnimals(dict: searchConditions)
             }
+            oldSearchConditions = searchConditions
         }
     }
     
-    let cellId = "BaseCellId"
-    var cellIndex:Int = 0 {
-        didSet {
-            let userDefault = UserDefaults.standard
-            favoriteAnimals = NSKeyedUnarchiver.unarchiveObject(with: (userDefault.object(forKey: "favoriteAnimals") as! NSData) as Data) as! [Animal]
-           self.animals = favoriteAnimals
-        }
-    }
+    let cellId = "AnimalResultCellCellId"
+    var cellIndex:Int = 0
+        
+    
     
     var animals:[Animal]? = nil {
         didSet {
@@ -95,7 +93,8 @@ class BaseCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AnimalCell
-        cell.animal = animals?[indexPath.item]
+        let animal = animals?[indexPath.item]
+        cell.animal = animal
 
         return cell
     }

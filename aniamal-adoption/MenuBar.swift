@@ -18,19 +18,19 @@ class MenuBar: UIView {
     var result:Int? {
         didSet {
             
-            resultLabel.text = "\(searchConditions["區域"]! ?? "") 共有 \(result ?? 0)筆資料"
+            resultLabel.text = "\(searchConditions["區域"]! ?? "")共有\(result ?? 0)筆資料"
         }
         
     }
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = UIColor.red
+        cv.backgroundColor = UIColor.mainBlue
         cv.dataSource = self
         cv.delegate = self
         return cv
     }()
-    let resultLabel:UILabel = {
+    var resultLabel:UILabel = {
        let label = UILabel()
        label.font = UIFont.boldSystemFont(ofSize: 15)
         label.textColor = UIColor.white

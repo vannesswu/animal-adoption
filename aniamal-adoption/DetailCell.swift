@@ -49,7 +49,6 @@ class DetailCell: UICollectionViewCell {
                     valueLabel.text = "無資料"
                 }
                 
-               
             case 9:
                 keyLabel.text = "所屬單位"
                 valueLabel.text = animal?.shelter_name ?? ""
@@ -94,24 +93,22 @@ class DetailCell: UICollectionViewCell {
         textView.backgroundColor = .clear
     return textView
     }()
-    
-    
-    
+    let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(r: 230, g: 230, b: 230)
+        return view
+    }()
     
     func setupViews() {
-       backgroundColor = UIColor.brown
+    //   backgroundColor = UIColor.brown
         addSubview(keyLabel)
         addSubview(valueLabel)
+        addSubview(separatorView)
         
         keyLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, topConstant: 8, leftConstant: 8, bottomConstant: 0, rightConstant: 0, widthConstant: 80, heightConstant: 0)
-        valueLabel.anchor(keyLabel.topAnchor, left: keyLabel.rightAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: 0)
-        
-        
-        
+        valueLabel.anchor(keyLabel.topAnchor, left: keyLabel.rightAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 1, rightConstant: 16, widthConstant: 0, heightConstant: 0)
+        separatorView.anchor(nil, left: valueLabel.leftAnchor, bottom: bottomAnchor, right: valueLabel.rightAnchor, topConstant: 0 , leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 1)
     }
-    
-    
-    
     
     
 }
