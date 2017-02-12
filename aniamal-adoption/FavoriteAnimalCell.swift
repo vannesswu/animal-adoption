@@ -10,5 +10,7 @@ import UIKit
 
 class FavoriteAnimalCell: AnimalResultCell {
     
-    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+    }
 }

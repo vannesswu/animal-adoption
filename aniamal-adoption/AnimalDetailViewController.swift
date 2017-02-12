@@ -62,10 +62,19 @@ class AnimalDetailViewController: UIViewController {
         navigationItem.backBarButtonItem = backBarButtonItem
 
         
+//        setupBarbutton()
+//        setupImageView()
+//        setupCollectionView()
+        }
+    
+    override func viewWillLayoutSubviews() {
         setupBarbutton()
         setupImageView()
         setupCollectionView()
-        }
+    }
+    
+    
+    
     func setupBarbutton(){
         let favoriteImage = UIImage(named: "love-58")?.withRenderingMode(.alwaysTemplate)
         let favoriteBarButtonItem = UIBarButtonItem(image: favoriteImage, style: .plain, target: self, action: #selector(selectToFavorite))
@@ -88,35 +97,26 @@ class AnimalDetailViewController: UIViewController {
         userDefault.synchronize()
         startFavoriteAnimate()
     }
-    // MARK: handle select animation
+    // MARK: handle tap favorite animation
     func startFavoriteAnimate() {
         if let window = UIApplication.shared.keyWindow {
             let animateView = UIImageView()
             window.addSubview(animateView)
             //    animalView.alpha = 0
-            let frame = animalView.superview?.convert(animalView.frame, to: window)
-            animateView.image = animalView.image
-            if (animal?.favorite)! {
-                animateView.frame = frame!
-                // bad method
+            let profileFrame = animalView.superview?.convert(animalView.frame, to: window)
+            // bad method
+            let favoriteFrame = CGRect(x: window.frame.width-30, y: 40, width: 0, height: 0)
+            let fromeFrame = (animal?.favorite)! ? profileFrame : favoriteFrame
+            let toFrame = (animal?.favorite)! ? favoriteFrame : profileFrame
+            animateView.image = self.animalView.image
+            animateView.frame = fromeFrame!
+            
                 UIView.animate(withDuration: 0.8, delay: 0, options: .curveEaseInOut, animations: {
-                    animateView.frame = CGRect(x: window.frame.width-30, y: 40, width: 0, height: 0)
+                    animateView.frame = toFrame!
                     animateView.alpha = 0
                 }, completion: {( bool:Bool) in
                     if bool { animateView.removeFromSuperview() }
                 })
-
-            } else {
-                animateView.frame = CGRect(x: window.frame.width-30, y: 40, width: 0, height: 0)
-                animateView.alpha = 0
-                // bad method
-                UIView.animate(withDuration: 0.8, delay: 0, options: .curveEaseInOut, animations: {
-                    animateView.frame = frame!
-                    animateView.alpha = 1
-                }, completion:{( bool:Bool) in
-                    if bool { animateView.removeFromSuperview() }
-            })
-          }
         }
     }
     

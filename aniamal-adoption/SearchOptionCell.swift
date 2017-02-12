@@ -35,11 +35,7 @@ class SearchOptionCell: UITableViewCell {
             self.selectView.tintColor = UIColor.mainBlue
         }
     }
-    override var isHighlighted: Bool {
-        didSet {
-            print("here")
-        }
-    }
+    
     
     func setupViews() {
         addSubview(selectView)

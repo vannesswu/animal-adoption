@@ -35,3 +35,33 @@ extension UIColor {
     
 }
 
+extension UIView {
+    
+    static func makeSeparatorView() -> UIView {
+        let view = UIView()
+        view.backgroundColor = UIColor(r: 230, g: 230, b: 230)
+        return view
+    }
+    
+    static let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(r: 230, g: 230, b: 230)
+        return view
+    }()
+}
+
+extension UIActivityIndicatorView {
+    static let spinner: UIActivityIndicatorView = {
+        let aiv = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        return aiv
+    }()
+}
+
+extension UILabel {
+    static func makeWhiteBackoundLabel() -> UILabel {
+     let label = UILabel()
+     label.alpha = 0.87
+    return label
+    }    
+}
+

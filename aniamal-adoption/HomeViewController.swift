@@ -15,6 +15,8 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     let favoriteAnimalCellId = "favoriteAnimalCellId"
     let menuBarHeight:CGFloat = 70
     var performSearch:Bool = false
+    var transitionImageFrame:CGRect?
+    var transitionImage:UIImage?
     var resultCount:Int? {
         didSet {
             menuBar.searchConditions = searchConditions
@@ -25,6 +27,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         
         didSet{
             if performSearch {
+                
             self.collectionView?.reloadData()
                 performSearch = false
             }
@@ -39,16 +42,19 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+   //     navigationController?.delegate = self
         navigationItem.title = "動物認領養"
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
          navigationController?.navigationBar.isTranslucent = false
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
-
         setupBarbutton()
         setupMenuBar()
         setupCollectionView()
-              
     }
+    
+    
+    
+    
     func setupCollectionView(){
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.scrollDirection = .horizontal
@@ -59,6 +65,9 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         collectionView?.register(FavoriteAnimalCell.self, forCellWithReuseIdentifier: favoriteAnimalCellId)
         collectionView?.contentInset = UIEdgeInsetsMake(56+menuBarHeight , 0, 0, 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(56+menuBarHeight, 0, 0, 0)
+        
+   //     collectionView?.contentOffset.y = 500
+        
         collectionView?.isPagingEnabled = true
 
     }
@@ -67,7 +76,6 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         let searchImage = UIImage(named: "search_icon")?.withRenderingMode(.alwaysOriginal)
         let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
         navigationItem.rightBarButtonItems = [searchBarButtonItem]
-        
         
         let backBarButtonItem = UIBarButtonItem(title: "回前頁", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         backBarButtonItem.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.white], for: .normal)
@@ -157,7 +165,6 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         var cell:AnimalResultCell
-        
         if indexPath.item == 0 {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: animalResultcellId, for: indexPath) as! AnimalResultCell
             
@@ -165,10 +172,8 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
              cell = collectionView.dequeueReusableCell(withReuseIdentifier: favoriteAnimalCellId, for: indexPath) as! FavoriteAnimalCell
             cell.animals = UserDefaults.fetchFavoriteAnimals()
         }
-        
         cell.cellIndex = indexPath.item
         cell.delegateController = self
-        
         return cell
     }
     
@@ -177,6 +182,24 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
 }
+
+//extension HomeViewController: UINavigationControllerDelegate {
+//    
+//    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        let animation = AnimalAnimation()
+//        animation.profileimage = transitionImage
+//        animation.cellProfileViewFrame = transitionImageFrame!
+//        if fromVC is HomeViewController {
+//            animation.presenting  =  true
+//        } else {
+//            animation.presenting  =  false
+//        }
+//        
+//        return animation
+//    }
+//    
+//}
+
 
     
 

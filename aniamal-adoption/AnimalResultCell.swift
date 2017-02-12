@@ -13,6 +13,7 @@ class AnimalResultCell: UICollectionViewCell, UICollectionViewDataSource, UIColl
     
     var favoriteAnimals = [Animal]()
     var oldSearchConditions:[String:String?] = [:]
+    var animateIsNeed:Bool = true
     var delegateController:HomeViewController? {
         didSet {
             self.searchConditions = (delegateController?.searchConditions)!
@@ -22,6 +23,7 @@ class AnimalResultCell: UICollectionViewCell, UICollectionViewDataSource, UIColl
         didSet {
             if self.cellIndex == 0, oldSearchConditions != searchConditions {
                 self.featchAnimals(dict: searchConditions)
+                self.animateIsNeed = true
             }
             oldSearchConditions = searchConditions
         }
@@ -46,11 +48,27 @@ class AnimalResultCell: UICollectionViewCell, UICollectionViewDataSource, UIColl
         return cv
     }()
     
+    let handleingView:UIView = {
+        let view = UIView()
+        let label = UILabel()
+        let spinner = UIActivityIndicatorView.spinner
+        label.text = "資料搜尋中請稍候..."
+        view.addSubview(label)
+        view.addSubview(spinner)
+        label.anchorCenterSuperview()
+        spinner.anchor(label.bottomAnchor, left: nil, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 50, heightConstant: 50)
+        spinner.anchorCenterXToSuperview()
+        spinner.startAnimating()
+        view.backgroundColor = UIColor(white: 1, alpha: 1)
+        return view
+    }()
+    
     func featchAnimals(dict:[String:String?]){
-        
+        setupHandleingView()
         let parameters = ApiService.shareInstatance.transDictToUrlFormat(dict)
         ApiService.shareInstatance.fetchAnimals(parameters) { (animals:[Animal]) in
             
+            self.handleingView.removeFromSuperview()
             self.animals = animals
             self.delegateController?.searchConditions = self.searchConditions
             self.delegateController?.resultCount = animals.count
@@ -60,7 +78,8 @@ class AnimalResultCell: UICollectionViewCell, UICollectionViewDataSource, UIColl
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViews()
+        setupCollectionView()
+//        setupHandleingView()
     }
     
     let wordLabel: UILabel = {
@@ -68,13 +87,26 @@ class AnimalResultCell: UICollectionViewCell, UICollectionViewDataSource, UIColl
         return label
     }()
     
-    func setupViews() {
+    func setupHandleingView() {
+        addSubview(handleingView)
+        handleingView.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+    }
+
+    
+    
+    
+    func setupCollectionView() {
   //      featchAnimals(dict:searchConditions)
         addSubview(collectionView)
+        
         addConstraintsWithFormat("H:|[v0]|", views: collectionView)
         addConstraintsWithFormat("V:|[v0]|", views: collectionView)
         
         collectionView.register(AnimalCell.self, forCellWithReuseIdentifier: cellId)
+        
+        // make botton more room for display 
+        collectionView.contentInset = UIEdgeInsetsMake( 0, 0, 70, 0)
+        collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 70, 0)
         
     }
     
@@ -108,10 +140,37 @@ class AnimalResultCell: UICollectionViewCell, UICollectionViewDataSource, UIColl
         return 0
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        // pass transition image frame and data
         if let animal = animals?[indexPath.item]{
+            let cell = collectionView.cellForItem(at: indexPath) as! AnimalCell
+            if let image = cell.animalView.image {
+                delegateController?.transitionImage = image
+            }
+            if let window = UIApplication.shared.keyWindow {
+                let frame = cell.animalView.superview?.convert(cell.animalView.frame, to: window)
+                delegateController?.transitionImageFrame = frame
+            }
         delegateController?.pushDetailViewController(animal)
         }
     
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if animateIsNeed {
+            let frame = cell.frame
+            cell.frame = CGRect(x: 0, y: self.collectionView.frame.height, width: frame.width, height: frame.height)
+            UIView.animate(withDuration: 1.0, delay: 0.0, options: UIViewAnimationOptions.transitionCrossDissolve, animations: { () -> Void in
+                cell.frame = frame
+            }, completion: {(bool:Bool) in
+                if bool {
+                    self.animateIsNeed = false
+                }
+            } )
+        }
+    }
+    
+    
+    
     
 }
