@@ -118,7 +118,7 @@ class DetailCell: UICollectionViewCell {
         
         if index == 9 {
             addSubview(showMapButton)
-            showMapButton.anchor(keyLabel.topAnchor, left: nil, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 1, rightConstant: 20, widthConstant: 41, heightConstant: 0)
+            showMapButton.anchor(nil, left: nil, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 1, rightConstant: 20, widthConstant: 30, heightConstant: 30)
             valueLabel.anchor(keyLabel.topAnchor, left: keyLabel.rightAnchor, bottom: bottomAnchor, right: showMapButton.leftAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 1, rightConstant: 16, widthConstant: 0, heightConstant: 0)
         } else {
             valueLabel.anchor(keyLabel.topAnchor, left: keyLabel.rightAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 1, rightConstant: 16, widthConstant: 0, heightConstant: 0)

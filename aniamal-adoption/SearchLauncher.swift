@@ -53,7 +53,7 @@ class SearchLauncher: NSObject {
     }()
     let rememberButton:UIButton = {
         let btn = UIButton()
-        btn.layer.borderWidth = 2
+        btn.layer.borderWidth = 4
         btn.layer.borderColor = UIColor.selectGreen.cgColor
         btn.setImage(UserDefaults.fetchisRemeberSetting() ? #imageLiteral(resourceName: "remember") : nil, for: .normal)
         return btn
@@ -67,6 +67,10 @@ class SearchLauncher: NSObject {
     }()
     
     func showSearching() {
+        // remove the handleView
+     //   if conditionDelegate.ha
+        
+        
         //show menu
     
         if let window = UIApplication.shared.keyWindow {
@@ -153,8 +157,9 @@ class SearchLauncher: NSObject {
         SearchView.addSubview(rememberButton)
         SearchView.addSubview(rememberLabel)
         rememberButton.addTarget(self, action: #selector(handleDefaultSetting), for: .touchUpInside)
-        rememberButton.anchor(collectionView.bottomAnchor, left: collectionView.leftAnchor, bottom: nil, right: nil, topConstant: 10, leftConstant: 20, bottomConstant: 0, rightConstant: 0, widthConstant: 15, heightConstant: 15)
-        rememberLabel.anchor(rememberButton.topAnchor, left: rememberButton.rightAnchor, bottom: nil, right: collectionView.rightAnchor, topConstant: 0, leftConstant: 10, bottomConstant: 0, rightConstant: 20, widthConstant: 0, heightConstant: 15)
+        rememberButton.anchor(collectionView.bottomAnchor, left: collectionView.leftAnchor, bottom: nil, right: nil, topConstant: 10, leftConstant: 25, bottomConstant: 0, rightConstant: 0, widthConstant: 25, heightConstant: 25)
+        rememberLabel.centerYAnchor.constraint(equalTo: rememberButton.centerYAnchor).isActive = true
+        rememberLabel.anchor(nil, left: rememberButton.rightAnchor, bottom: nil, right: collectionView.rightAnchor, topConstant: 0, leftConstant: 10, bottomConstant: 0, rightConstant: 10, widthConstant: 0, heightConstant: 15)
         
     }
     func setupPerformButton() {

@@ -14,6 +14,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     var isFirstLaunchForSettingCondition = true
     let animalResultcellId = "animalResultCellId"
     let favoriteAnimalCellId = "favoriteAnimalCellId"
+    let adoptNoteCellId = "AdoptNoteCellId"
     let menuBarHeight:CGFloat = 70
     var performSearch:Bool = false
     var transitionImageFrame:CGRect?
@@ -69,17 +70,16 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         collectionView?.backgroundColor = .white
         collectionView?.register(AnimalResultCell.self, forCellWithReuseIdentifier: animalResultcellId)
         collectionView?.register(FavoriteAnimalCell.self, forCellWithReuseIdentifier: favoriteAnimalCellId)
+        collectionView?.register(AdoptNoteCell.self, forCellWithReuseIdentifier: adoptNoteCellId)
         collectionView?.contentInset = UIEdgeInsetsMake(58+menuBarHeight , 0, 0, 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(58+menuBarHeight, 0, 0, 0)
-        
-   //     collectionView?.contentOffset.y = 500
         
         collectionView?.isPagingEnabled = true
 
     }
     
     func setupBarbutton(){
-        let searchImage = UIImage(named: "search_icon")?.withRenderingMode(.alwaysOriginal)
+        let searchImage = UIImage(named: "search")?.withRenderingMode(.alwaysOriginal)
         let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
         navigationItem.rightBarButtonItems = [searchBarButtonItem]
         
@@ -136,8 +136,11 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         if index.item == 0 {
             let cityLabel:String = self.menuBar.searchConditions["區域"]!! == "不限" ? "不限地區" : searchConditions["區域"]!!
             self.menuBar.resultLabel.text = "\(cityLabel)共有\(self.menuBar.result ?? 0)筆資料"
+        } else if index.item == 1{
+            self.menuBar.resultLabel.text = "收藏共有\(UserDefaults.fetchFavoriteAnimals().count)筆資料"
         } else {
-       self.menuBar.resultLabel.text = "收藏共有\(UserDefaults.fetchFavoriteAnimals().count)筆資料"
+            self.menuBar.resultLabel.text = ""
+            
         }
         
     }
@@ -160,28 +163,35 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-       menuBar.horizontalBarLeftAnchorConstraint?.constant = scrollView.contentOffset.x / 2
+       menuBar.horizontalBarLeftAnchorConstraint?.constant = scrollView.contentOffset.x / 3
         
     }
     
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         var cell:AnimalResultCell
+        
         if indexPath.item == 0 {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: animalResultcellId, for: indexPath) as! AnimalResultCell
+            cell.cellIndex = indexPath.item
+            cell.delegateController = self
             
-        } else {
+        } else if indexPath.item == 1{
              cell = collectionView.dequeueReusableCell(withReuseIdentifier: favoriteAnimalCellId, for: indexPath) as! FavoriteAnimalCell
             cell.animals = UserDefaults.fetchFavoriteAnimals()
+            cell.cellIndex = indexPath.item
+            cell.delegateController = self
+        } else {
+         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: adoptNoteCellId, for: indexPath) as! AdoptNoteCell
+            return cell
         }
-        cell.cellIndex = indexPath.item
-        cell.delegateController = self
+        
         return cell
     }
     

@@ -51,6 +51,22 @@ extension UIColor {
     static let htmlBlue = {
         return UIColor(r: 85, g: 135, b: 253)
     }()
+    static let lightGray = {
+        return UIColor(r: 211, g: 211, b: 211)
+    }()
+    static let adoptBlue = {
+        return UIColor(r: 51, g: 139, b: 227)
+    }()
+    static let adoptGreen = {
+        return UIColor(r: 21, g: 175, b: 132)
+    }()
+    static let adoptPupple = {
+        return UIColor(r: 116, g: 72, b: 212)
+    }()
+    static let adoptRed = {
+        return UIColor(r: 254, g: 88, b: 128)
+    }()
+    
     
     
 }
