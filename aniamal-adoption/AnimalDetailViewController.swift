@@ -60,7 +60,7 @@ class AnimalDetailViewController: UIViewController {
         backBarButtonItem.tintColor = UIColor.white
         
         navigationItem.backBarButtonItem = backBarButtonItem
-
+        navigationItem.title = animal?.animal_sex == "公" ? "帥哥" : "美女"
         
 //        setupBarbutton()
 //        setupImageView()
@@ -122,7 +122,7 @@ class AnimalDetailViewController: UIViewController {
     
     
     func setupImageView(){
-        let imageHeight = view.frame.size.height/3
+        let imageHeight = view.frame.size.width*3/4
         view.addSubview(animalView)
         animalView.anchor(self.view.topAnchor, left: self.view.leftAnchor, bottom: nil, right: self.view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: imageHeight)
         if let urlString = animal?.album_file {
@@ -134,6 +134,13 @@ class AnimalDetailViewController: UIViewController {
         collectionView.register(DetailCell.self, forCellWithReuseIdentifier: cellId)
         view.addSubview(collectionView)
         collectionView.anchor(animalView.bottomAnchor, left: animalView.leftAnchor, bottom: self.view.bottomAnchor, right: animalView.rightAnchor, topConstant: 8, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+    }
+    
+    func showMapView(){
+        
+        let mapViewController = MapViewController()
+        mapViewController.shelterName = animal?.shelter_name
+        navigationController?.pushViewController(mapViewController, animated: true)
     }
     
     
@@ -150,6 +157,7 @@ extension AnimalDetailViewController: UICollectionViewDataSource, UICollectionVi
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! DetailCell
         cell.index = indexPath.item
         cell.animal = animal
+        cell.mapviewDelegateController = self
         
         return cell
     }

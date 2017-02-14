@@ -12,9 +12,10 @@ import LBTAComponents
 class DetailCell: UICollectionViewCell {
     
     var index:Int?
-    
+    var mapviewDelegateController:AnimalDetailViewController?
     var animal:Animal? {
         didSet{
+            setupViews()
             if let index = self.index {
             switch index {
             case 0:
@@ -69,7 +70,7 @@ class DetailCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViews()
+  //      setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -98,16 +99,39 @@ class DetailCell: UICollectionViewCell {
         view.backgroundColor = UIColor(r: 230, g: 230, b: 230)
         return view
     }()
+    lazy var showMapButton:UIButton = {
+        let btn = UIButton()
+    //btn.setTitle("前往地圖", for: .normal)
+        btn.setTitleColor(UIColor.htmlBlue, for: .normal)
+        btn.setImage(#imageLiteral(resourceName: "map"), for: .normal)
+        btn.addTarget(self, action: #selector(showMap), for: .touchUpInside)
+        return btn
+    }()
+    
     
     func setupViews() {
     //   backgroundColor = UIColor.brown
         addSubview(keyLabel)
         addSubview(valueLabel)
-        addSubview(separatorView)
         
         keyLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, topConstant: 8, leftConstant: 8, bottomConstant: 0, rightConstant: 0, widthConstant: 80, heightConstant: 0)
-        valueLabel.anchor(keyLabel.topAnchor, left: keyLabel.rightAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 1, rightConstant: 16, widthConstant: 0, heightConstant: 0)
-        separatorView.anchor(nil, left: valueLabel.leftAnchor, bottom: bottomAnchor, right: valueLabel.rightAnchor, topConstant: 0 , leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 1)
+        
+        if index == 9 {
+            addSubview(showMapButton)
+            showMapButton.anchor(keyLabel.topAnchor, left: nil, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 1, rightConstant: 20, widthConstant: 41, heightConstant: 0)
+            valueLabel.anchor(keyLabel.topAnchor, left: keyLabel.rightAnchor, bottom: bottomAnchor, right: showMapButton.leftAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 1, rightConstant: 16, widthConstant: 0, heightConstant: 0)
+        } else {
+            valueLabel.anchor(keyLabel.topAnchor, left: keyLabel.rightAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 1, rightConstant: 16, widthConstant: 0, heightConstant: 0)
+        }
+        addSubview(separatorView)
+        separatorView.anchor(nil, left: valueLabel.leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0 , leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 1)
+        
+        
+        
+    }
+    
+    func showMap() {
+        mapviewDelegateController?.showMapView()
     }
     
     

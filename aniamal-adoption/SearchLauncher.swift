@@ -19,6 +19,7 @@ class SearchLauncher: NSObject {
     var conditionDelegate: HomeViewController?
     
     var searchConditions:[String:String?] = ["區域":nil, "分類":nil, "體型":nil, "年紀":nil, "毛色":nil, "性別":nil]
+    
 //    let searchDict = ["區域":cityArray, "分類":kindArray, "體型":bodyArray, "年紀":ageArray, "毛色":colorArray, "性別":sexArray]
     
     let blackView = UIView()
@@ -50,10 +51,24 @@ class SearchLauncher: NSObject {
         cv.delegate = self
         return cv
     }()
+    let rememberButton:UIButton = {
+        let btn = UIButton()
+        btn.layer.borderWidth = 2
+        btn.layer.borderColor = UIColor.selectGreen.cgColor
+        btn.setImage(UserDefaults.fetchisRemeberSetting() ? #imageLiteral(resourceName: "remember") : nil, for: .normal)
+        return btn
+    }()
+    let rememberLabel:UILabel = {
+        let label = UILabel()
+        label.text = "記住此設定"
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.textAlignment = .center
+        return label
+    }()
     
     func showSearching() {
         //show menu
-        
+    
         if let window = UIApplication.shared.keyWindow {
             
             blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
@@ -62,6 +77,7 @@ class SearchLauncher: NSObject {
             window.addSubview(SearchView)
             setupHeaderView()
             setupCollectionView()
+            setupRememberButton()
             setupPerformButton()
            
             SearchView.frame = CGRect(x: window.frame.width, y: 0, width: window.frame.width/2, height: window.frame.height)
@@ -80,10 +96,17 @@ class SearchLauncher: NSObject {
         
     }
     func performSearch() {
-     conditionDelegate?.performSearch = true
-     conditionDelegate?.searchConditions = self.searchConditions
-    
-     handleDismiss()
+        conditionDelegate?.performSearch = true
+        conditionDelegate?.searchConditions = self.searchConditions
+        if UserDefaults.fetchisRemeberSetting() {
+            var condition = [String:String]()
+            for (key, value) in searchConditions {
+                condition[key] = value ?? "不限"
+            }
+            UserDefaults.standard.set(condition, forKey: "searchingSetting")
+        }
+        
+        handleDismiss()
         
         
     }
@@ -125,13 +148,29 @@ class SearchLauncher: NSObject {
         collectionView.anchor(headerView.bottomAnchor, left: headerView.leftAnchor, bottom: nil, right: headerView.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: CGFloat(searchOptions.count) * cellHeight)
         
     }
+    
+    func setupRememberButton(){
+        SearchView.addSubview(rememberButton)
+        SearchView.addSubview(rememberLabel)
+        rememberButton.addTarget(self, action: #selector(handleDefaultSetting), for: .touchUpInside)
+        rememberButton.anchor(collectionView.bottomAnchor, left: collectionView.leftAnchor, bottom: nil, right: nil, topConstant: 10, leftConstant: 20, bottomConstant: 0, rightConstant: 0, widthConstant: 15, heightConstant: 15)
+        rememberLabel.anchor(rememberButton.topAnchor, left: rememberButton.rightAnchor, bottom: nil, right: collectionView.rightAnchor, topConstant: 0, leftConstant: 10, bottomConstant: 0, rightConstant: 20, widthConstant: 0, heightConstant: 15)
+        
+    }
     func setupPerformButton() {
         SearchView.addSubview(performButton)
-        performButton.anchor(collectionView.bottomAnchor, left: collectionView.leftAnchor, bottom: nil, right: collectionView.rightAnchor, topConstant: 10, leftConstant: 20, bottomConstant: 0, rightConstant: 20, widthConstant: 0, heightConstant: cellHeight)
+        performButton.anchor(collectionView.bottomAnchor, left: collectionView.leftAnchor, bottom: nil, right: collectionView.rightAnchor, topConstant: 50, leftConstant: 20, bottomConstant: 0, rightConstant: 20, widthConstant: 0, heightConstant: cellHeight)
         performButton.anchorCenterXToSuperview()
         
     }
+
     
+    
+    func handleDefaultSetting() {
+        UserDefaults.standard.set(!UserDefaults.fetchisRemeberSetting(), forKey: "rememberSetting")
+        rememberButton.setImage(UserDefaults.fetchisRemeberSetting() ? #imageLiteral(resourceName: "remember") : nil, for: .normal)
+        
+    }
     
     override init() {
         super.init()

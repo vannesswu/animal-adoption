@@ -23,6 +23,19 @@ extension UserDefaults {
         
         return [Animal]()
     }
+    static func fetchSearchSetting() -> NSDictionary? {
+        let userDefault = UserDefaults.standard
+        if let setting = userDefault.object(forKey: "searchingSetting") as? NSDictionary {
+            return setting
+        }
+        return nil
+    }
+    static func fetchisRemeberSetting() -> Bool {
+        if let bool = UserDefaults.standard.object(forKey: "rememberSetting") as? Bool {
+            return bool
+        }
+        return false
+    }
 }
 
 extension UIColor {
@@ -32,6 +45,13 @@ extension UIColor {
     static let darkBlue = {
         return UIColor(r: 12, g: 75, b: 94)
     }()
+    static let selectGreen = {
+        return UIColor(r: 57, g: 199, b: 50)
+    }()
+    static let htmlBlue = {
+        return UIColor(r: 85, g: 135, b: 253)
+    }()
+    
     
 }
 

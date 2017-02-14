@@ -19,7 +19,7 @@ class AnimalResultCell: UICollectionViewCell, UICollectionViewDataSource, UIColl
             self.searchConditions = (delegateController?.searchConditions)!
         }
     }
-    var searchConditions:[String:String?] = ["區域":"台南市", "分類":"狗", "體型":nil, "年紀":nil, "毛色":nil, "性別":nil] {
+    var searchConditions:[String:String?] = ["區域":"臺北市", "分類":"狗", "體型":nil, "年紀":nil, "毛色":nil, "性別":nil] {
         didSet {
             if self.cellIndex == 0, oldSearchConditions != searchConditions {
                 self.featchAnimals(dict: searchConditions)
@@ -160,7 +160,7 @@ class AnimalResultCell: UICollectionViewCell, UICollectionViewDataSource, UIColl
         if animateIsNeed {
             let frame = cell.frame
             cell.frame = CGRect(x: 0, y: self.collectionView.frame.height, width: frame.width, height: frame.height)
-            UIView.animate(withDuration: 1.0, delay: 0.0, options: UIViewAnimationOptions.transitionCrossDissolve, animations: { () -> Void in
+            UIView.animate(withDuration: 0.75, delay: 0.0, options: UIViewAnimationOptions.transitionCrossDissolve, animations: { () -> Void in
                 cell.frame = frame
             }, completion: {(bool:Bool) in
                 if bool {

@@ -9,6 +9,7 @@
 import UIKit
 import LBTAComponents
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -34,8 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.addSubview(statusBarBackgroundView)
         window?.addConstraintsWithFormat("H:|[v0]|", views: statusBarBackgroundView)
         window?.addConstraintsWithFormat("V:|[v0(20)]", views: statusBarBackgroundView)
-        
-        
         
         
         return true

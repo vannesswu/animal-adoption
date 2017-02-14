@@ -15,14 +15,22 @@ class SearchCell: UICollectionViewCell {
      let cellId = "optionCellId"
      let cellHeight = 40
      var optionArray:[String]?
-     var titleKey:String?
+     var titleKey:String!
      var conditionDelegate:SearchLauncher?
     var menuDict:[String:AnyObject]? {
         
         didSet {
             titleKey = menuDict?.keys.first
             categorylabel.text = titleKey
-            optionButton.setTitle("不限", for: .normal)
+            
+            if UserDefaults.fetchisRemeberSetting() {
+                if let setting = UserDefaults.fetchSearchSetting() as? [String:String] {
+                    optionButton.setTitle(setting[titleKey], for: .normal)
+                }
+            } else {
+                optionButton.setTitle("不限", for: .normal)
+            }
+            
         }
     }
     
@@ -31,9 +39,11 @@ class SearchCell: UICollectionViewCell {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(SearchOptionCell.self, forCellReuseIdentifier: self.cellId)
+        // inital the first row selected if remember setting is false
+        if !UserDefaults.fetchisRemeberSetting() {
         let selectedIndexPath = IndexPath(row: 0, section: 0)
         tableView.selectRow(at: selectedIndexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
-        
+        }
         return tableView
     }()
     
@@ -175,19 +185,12 @@ extension SearchCell: UITableViewDelegate, UITableViewDataSource {
         optionTabeleView.removeFromSuperview()
         self.blackView.alpha = 0
             storeConditions((optionArray?[indexPath.row])!)
-        
     }
 
     
     func storeConditions(_ value:String) {
-        if value == "不限" {
-       conditionDelegate?.searchConditions[titleKey!] = nil
-        } else {
        conditionDelegate?.searchConditions[titleKey!] = value
-
-        }
-    
-    }
+         }
 }
 
 

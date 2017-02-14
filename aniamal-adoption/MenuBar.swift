@@ -13,12 +13,12 @@ class MenuBar: UIView {
     
     let cellId = "menuCellId"
     let imageNames = ["home", "love"]
-    var searchConditions:[String:String?] = ["區域":"不限", "分類":"狗", "體型":nil, "年紀":nil, "毛色":nil, "性別":nil]
+    var searchConditions:[String:String?] = ["區域":"臺北市", "分類":"狗", "體型":nil, "年紀":nil, "毛色":nil, "性別":nil]
     var homeViewController : HomeViewController?
     var result:Int? {
         didSet {
-            
-            resultLabel.text = "\(searchConditions["區域"]! ?? "")共有\(result ?? 0)筆資料"
+            let cityLabel:String = searchConditions["區域"]!! == "不限" ? "不限地區" : searchConditions["區域"]!!
+            resultLabel.text = "\(cityLabel)共有\(result ?? 0)筆資料"
         }
         
     }

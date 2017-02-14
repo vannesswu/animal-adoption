@@ -10,7 +10,8 @@ import UIKit
 import LBTAComponents
 
 class HomeViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-
+    
+    var isFirstLaunchForSettingCondition = true
     let animalResultcellId = "animalResultCellId"
     let favoriteAnimalCellId = "favoriteAnimalCellId"
     let menuBarHeight:CGFloat = 70
@@ -23,11 +24,10 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
             menuBar.result = resultCount
         }
     }
-    var searchConditions:[String:String?] = ["區域":"台南市", "分類":"狗", "體型":nil, "年紀":nil, "毛色":nil, "性別":nil] {
+    var searchConditions:[String:String?] = ["區域":"臺北市", "分類":"狗", "體型":nil, "年紀":nil, "毛色":nil, "性別":nil] {
         
         didSet{
             if performSearch {
-                
             self.collectionView?.reloadData()
                 performSearch = false
             }
@@ -50,10 +50,16 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         setupBarbutton()
         setupMenuBar()
         setupCollectionView()
+        
+        // for setting conditio
+        if isFirstLaunchForSettingCondition && UserDefaults.fetchisRemeberSetting() {
+            if let conditions = UserDefaults.fetchSearchSetting(){
+                 searchConditions = conditions as! [String : String?]
+                isFirstLaunchForSettingCondition = false
+            }
+        }
+        
     }
-    
-    
-    
     
     func setupCollectionView(){
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -63,8 +69,8 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         collectionView?.backgroundColor = .white
         collectionView?.register(AnimalResultCell.self, forCellWithReuseIdentifier: animalResultcellId)
         collectionView?.register(FavoriteAnimalCell.self, forCellWithReuseIdentifier: favoriteAnimalCellId)
-        collectionView?.contentInset = UIEdgeInsetsMake(56+menuBarHeight , 0, 0, 0)
-        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(56+menuBarHeight, 0, 0, 0)
+        collectionView?.contentInset = UIEdgeInsetsMake(58+menuBarHeight , 0, 0, 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(58+menuBarHeight, 0, 0, 0)
         
    //     collectionView?.contentOffset.y = 500
         
@@ -111,6 +117,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     func handleSearch(){
         searchLauncher.conditionDelegate = self
+        searchLauncher.searchConditions = searchConditions
         searchLauncher.showSearching()
         // move to AnimalResultCell
         let indexPath = IndexPath(item: 0, section: 0)
@@ -127,7 +134,8 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     fileprivate func setTitleForIndex(_ index: IndexPath) {
         if index.item == 0 {
-            self.menuBar.resultLabel.text = "\(self.menuBar.searchConditions["區域"]! ?? "")共有\(self.menuBar.result ?? 0)筆資料"
+            let cityLabel:String = self.menuBar.searchConditions["區域"]!! == "不限" ? "不限地區" : searchConditions["區域"]!!
+            self.menuBar.resultLabel.text = "\(cityLabel)共有\(self.menuBar.result ?? 0)筆資料"
         } else {
        self.menuBar.resultLabel.text = "收藏共有\(UserDefaults.fetchFavoriteAnimals().count)筆資料"
         }

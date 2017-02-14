@@ -19,7 +19,7 @@ static let shareInstatance = ApiService()
     
     
     func fetchAnimals(_ parameter:String, completion: @escaping ([Animal]) -> () ){
-        let urlWithParameter = baseUrl + "?$top=5000&$skip=0&"+parameter
+        let urlWithParameter = baseUrl + "?$top=1000&$skip=0&"+parameter
         
         let url = URL(string: urlWithParameter)
         var animals = [Animal]()
@@ -58,7 +58,7 @@ static let shareInstatance = ApiService()
         
         var parameterArray = [String]()
         for (key , value) in dict {
-            if let value = value {
+            if let value = value , value != "不限" {
                 switch key {
                 case "區域":
                     if value != "臺中市" && value != "雲林縣"{
