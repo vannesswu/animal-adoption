@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
-class AnimalResultCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
-    
+class AnimalResultCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, GADInterstitialDelegate {
+    var clickNumber = 0
+    var interstitial: GADInterstitial!
     var favoriteAnimals = [Animal]()
     var oldSearchConditions:[String:String?] = [:]
     var animateIsNeed:Bool = true
@@ -78,6 +79,11 @@ class AnimalResultCell: UICollectionViewCell, UICollectionViewDataSource, UIColl
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        interstitial.delegate = self
+        let request = GADRequest()
+     //   request.testDevices = ["2077ef9a63d2b398840261c8221a0c9b"]
+        interstitial.load(request)
         setupCollectionView()
 //        setupHandleingView()
     }
@@ -141,6 +147,12 @@ class AnimalResultCell: UICollectionViewCell, UICollectionViewDataSource, UIColl
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        if interstitial.isReady ,adsNumber == clickNumber{
+            interstitial.present(fromRootViewController: delegateController!)
+        }
+        
+        
+        
         // pass transition image frame and data
         if let animal = animals?[indexPath.item]{
             let cell = collectionView.cellForItem(at: indexPath) as! AnimalCell
@@ -153,7 +165,7 @@ class AnimalResultCell: UICollectionViewCell, UICollectionViewDataSource, UIColl
             }
         delegateController?.pushDetailViewController(animal)
         }
-    
+       clickNumber += 1
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

@@ -8,8 +8,9 @@
 
 import UIKit
 import LBTAComponents
+import Firebase
 
-
+var adsNumber:Int = 0
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -18,7 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        // FireBase admob setup
+        FIRApp.configure()
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-8818309556860374~4311631649")
+        // create main viewcontroller
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         let layout = UICollectionViewFlowLayout()
@@ -36,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.addConstraintsWithFormat("H:|[v0]|", views: statusBarBackgroundView)
         window?.addConstraintsWithFormat("V:|[v0(20)]", views: statusBarBackgroundView)
         
-        
+        adsNumber = Int(arc4random_uniform(5))+3
         return true
     }
 

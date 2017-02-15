@@ -9,8 +9,12 @@
 /* Begin PBXBuildFile section */
 		6102810F1E51F1BF004E14BB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6102810E1E51F1BF004E14BB /* MapViewController.swift */; };
 		610281551E535188004E14BB /* AdoptNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610281541E535188004E14BB /* AdoptNoteCell.swift */; };
-		610281571E537218004E14BB /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610281561E537218004E14BB /* BaseView.swift */; };
+		610281571E537218004E14BB /* NoteBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610281561E537218004E14BB /* NoteBaseView.swift */; };
 		610281591E5374EC004E14BB /* AdoptNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610281581E5374EC004E14BB /* AdoptNoteView.swift */; };
+		6102815B1E541960004E14BB /* AdoptShelterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6102815A1E541960004E14BB /* AdoptShelterView.swift */; };
+		6102815F1E5427C6004E14BB /* AdoptCuteVideos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6102815E1E5427C6004E14BB /* AdoptCuteVideos.swift */; };
+		610281611E5432A0004E14BB /* AdoptAboutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610281601E54329F004E14BB /* AdoptAboutApp.swift */; };
+		610281631E5486CB004E14BB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 610281621E5486CB004E14BB /* GoogleService-Info.plist */; };
 		6184618A1E48DB860062E0FE /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618461891E48DB860062E0FE /* ApiService.swift */; };
 		6184618C1E49C8DB0062E0FE /* AnimalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184618B1E49C8DB0062E0FE /* AnimalDetailViewController.swift */; };
 		6184618E1E49E26D0062E0FE /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184618D1E49E26D0062E0FE /* DetailCell.swift */; };
@@ -28,15 +32,21 @@
 		61DFC0AE1E48B50E0017923C /* AnimalResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DFC0AD1E48B50E0017923C /* AnimalResultCell.swift */; };
 		61DFC0B11E48B7780017923C /* AnimalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DFC0B01E48B7780017923C /* AnimalCell.swift */; };
 		61DFC0B61E48CA190017923C /* Animals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DFC0B51E48CA190017923C /* Animals.swift */; };
-		7DFD13CBC7C0EA79EC8E371A /* Pods_aniamal_adoption.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51049384F6230C4046F5C20C /* Pods_aniamal_adoption.framework */; };
+		838A6A38DC47F5100AF3DCF2 /* Pods_animal_adoption.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25FD78DB94F8ABBAD7AF6CB9 /* Pods_animal_adoption.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25FD78DB94F8ABBAD7AF6CB9 /* Pods_animal_adoption.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_animal_adoption.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		36879CE456AE9BEC52D8057D /* Pods-animal-adoption.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-animal-adoption.debug.xcconfig"; path = "Pods/Target Support Files/Pods-animal-adoption/Pods-animal-adoption.debug.xcconfig"; sourceTree = "<group>"; };
 		51049384F6230C4046F5C20C /* Pods_aniamal_adoption.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aniamal_adoption.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6102810E1E51F1BF004E14BB /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		610281541E535188004E14BB /* AdoptNoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdoptNoteCell.swift; sourceTree = "<group>"; };
-		610281561E537218004E14BB /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		610281561E537218004E14BB /* NoteBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteBaseView.swift; sourceTree = "<group>"; };
 		610281581E5374EC004E14BB /* AdoptNoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdoptNoteView.swift; sourceTree = "<group>"; };
+		6102815A1E541960004E14BB /* AdoptShelterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdoptShelterView.swift; sourceTree = "<group>"; };
+		6102815E1E5427C6004E14BB /* AdoptCuteVideos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdoptCuteVideos.swift; sourceTree = "<group>"; };
+		610281601E54329F004E14BB /* AdoptAboutApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdoptAboutApp.swift; sourceTree = "<group>"; };
+		610281621E5486CB004E14BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		618461891E48DB860062E0FE /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		6184618B1E49C8DB0062E0FE /* AnimalDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalDetailViewController.swift; sourceTree = "<group>"; };
 		6184618D1E49E26D0062E0FE /* DetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
@@ -57,6 +67,7 @@
 		61DFC0B01E48B7780017923C /* AnimalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalCell.swift; sourceTree = "<group>"; };
 		61DFC0B51E48CA190017923C /* Animals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animals.swift; sourceTree = "<group>"; };
 		78CDC2F20FFBC07627F21866 /* Pods-aniamal-adoption.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aniamal-adoption.release.xcconfig"; path = "Pods/Target Support Files/Pods-aniamal-adoption/Pods-aniamal-adoption.release.xcconfig"; sourceTree = "<group>"; };
+		93A22EF75AB712AB4D8AF168 /* Pods-animal-adoption.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-animal-adoption.release.xcconfig"; path = "Pods/Target Support Files/Pods-animal-adoption/Pods-animal-adoption.release.xcconfig"; sourceTree = "<group>"; };
 		A4CC2BD5737D4B3B3081DB26 /* Pods-aniamal-adoption.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aniamal-adoption.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aniamal-adoption/Pods-aniamal-adoption.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DFD13CBC7C0EA79EC8E371A /* Pods_aniamal_adoption.framework in Frameworks */,
+				838A6A38DC47F5100AF3DCF2 /* Pods_animal_adoption.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,8 +87,30 @@
 			isa = PBXGroup;
 			children = (
 				51049384F6230C4046F5C20C /* Pods_aniamal_adoption.framework */,
+				25FD78DB94F8ABBAD7AF6CB9 /* Pods_animal_adoption.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6102815C1E54198C004E14BB /* AdoptNoteCell_4Views */ = {
+			isa = PBXGroup;
+			children = (
+				610281581E5374EC004E14BB /* AdoptNoteView.swift */,
+				6102815A1E541960004E14BB /* AdoptShelterView.swift */,
+				6102815E1E5427C6004E14BB /* AdoptCuteVideos.swift */,
+				610281601E54329F004E14BB /* AdoptAboutApp.swift */,
+			);
+			name = AdoptNoteCell_4Views;
+			sourceTree = "<group>";
+		};
+		6102815D1E5419C7004E14BB /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				618461891E48DB860062E0FE /* ApiService.swift */,
+				618461CD1E4EF1300062E0FE /* UsefulExtension.swift */,
+				610281561E537218004E14BB /* NoteBaseView.swift */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 		618461D31E50BB990062E0FE /* Transitions */ = {
@@ -109,14 +142,13 @@
 		61DFC09A1E48A94B0017923C /* animal-adoption */ = {
 			isa = PBXGroup;
 			children = (
-				618461891E48DB860062E0FE /* ApiService.swift */,
-				618461CD1E4EF1300062E0FE /* UsefulExtension.swift */,
-				610281561E537218004E14BB /* BaseView.swift */,
+				6102815D1E5419C7004E14BB /* Helper */,
 				61DFC0AF1E48B5250017923C /* View */,
 				61DFC0B21E48BB3A0017923C /* ViewController */,
 				61DFC0B71E48CA200017923C /* model */,
 				618461D31E50BB990062E0FE /* Transitions */,
 				61DFC0A41E48A94B0017923C /* LaunchScreen.storyboard */,
+				610281621E5486CB004E14BB /* GoogleService-Info.plist */,
 				61DFC0A71E48A94B0017923C /* Info.plist */,
 				61DFC0A21E48A94B0017923C /* Assets.xcassets */,
 				61DFC09B1E48A94B0017923C /* AppDelegate.swift */,
@@ -136,7 +168,7 @@
 				618461CF1E4F01800062E0FE /* FavoriteAnimalCell.swift */,
 				61DFC0AD1E48B50E0017923C /* AnimalResultCell.swift */,
 				610281541E535188004E14BB /* AdoptNoteCell.swift */,
-				610281581E5374EC004E14BB /* AdoptNoteView.swift */,
+				6102815C1E54198C004E14BB /* AdoptNoteCell_4Views */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -165,6 +197,8 @@
 			children = (
 				A4CC2BD5737D4B3B3081DB26 /* Pods-aniamal-adoption.debug.xcconfig */,
 				78CDC2F20FFBC07627F21866 /* Pods-aniamal-adoption.release.xcconfig */,
+				36879CE456AE9BEC52D8057D /* Pods-animal-adoption.debug.xcconfig */,
+				93A22EF75AB712AB4D8AF168 /* Pods-animal-adoption.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -234,6 +268,7 @@
 			files = (
 				61DFC0A61E48A94B0017923C /* LaunchScreen.storyboard in Resources */,
 				61DFC0A31E48A94B0017923C /* Assets.xcassets in Resources */,
+				610281631E5486CB004E14BB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,7 +287,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-aniamal-adoption/Pods-aniamal-adoption-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-animal-adoption/Pods-animal-adoption-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B1656CF1396DBD4D5D89B9AE /* [CP] Embed Pods Frameworks */ = {
@@ -267,7 +302,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-aniamal-adoption/Pods-aniamal-adoption-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-animal-adoption/Pods-animal-adoption-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D6D7A88971216BE48CAD5812 /* [CP] Check Pods Manifest.lock */ = {
@@ -307,9 +342,12 @@
 				610281591E5374EC004E14BB /* AdoptNoteView.swift in Sources */,
 				6184618A1E48DB860062E0FE /* ApiService.swift in Sources */,
 				6184618C1E49C8DB0062E0FE /* AnimalDetailViewController.swift in Sources */,
+				6102815B1E541960004E14BB /* AdoptShelterView.swift in Sources */,
 				6184618E1E49E26D0062E0FE /* DetailCell.swift in Sources */,
-				610281571E537218004E14BB /* BaseView.swift in Sources */,
+				6102815F1E5427C6004E14BB /* AdoptCuteVideos.swift in Sources */,
+				610281571E537218004E14BB /* NoteBaseView.swift in Sources */,
 				618461C01E4C293B0062E0FE /* MenuBar.swift in Sources */,
+				610281611E5432A0004E14BB /* AdoptAboutApp.swift in Sources */,
 				61DFC0B11E48B7780017923C /* AnimalCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,14 +461,14 @@
 		};
 		61DFC0AB1E48A94B0017923C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A4CC2BD5737D4B3B3081DB26 /* Pods-aniamal-adoption.debug.xcconfig */;
+			baseConfigurationReference = 36879CE456AE9BEC52D8057D /* Pods-animal-adoption.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4ANE8KXCD8;
 				INFOPLIST_FILE = "aniamal-adoption/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "vanness-wu.animal-adoption";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vanness-wu.animal-adoption";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -439,14 +477,14 @@
 		};
 		61DFC0AC1E48A94B0017923C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 78CDC2F20FFBC07627F21866 /* Pods-aniamal-adoption.release.xcconfig */;
+			baseConfigurationReference = 93A22EF75AB712AB4D8AF168 /* Pods-animal-adoption.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4ANE8KXCD8;
 				INFOPLIST_FILE = "aniamal-adoption/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "vanness-wu.animal-adoption";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vanness-wu.animal-adoption";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

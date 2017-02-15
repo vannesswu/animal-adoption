@@ -76,7 +76,7 @@ class AnimalDetailViewController: UIViewController {
     
     
     func setupBarbutton(){
-        let favoriteImage = UIImage(named: "love-58")?.withRenderingMode(.alwaysTemplate)
+        let favoriteImage = UIImage(named: "love-72")?.withRenderingMode(.alwaysTemplate)
         let favoriteBarButtonItem = UIBarButtonItem(image: favoriteImage, style: .plain, target: self, action: #selector(selectToFavorite))
         navigationItem.rightBarButtonItems = [favoriteBarButtonItem]
         favorite = (animal?.favorite)!

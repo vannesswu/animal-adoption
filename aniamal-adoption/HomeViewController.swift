@@ -8,6 +8,7 @@
 
 import UIKit
 import LBTAComponents
+import GoogleMobileAds
 
 class HomeViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     

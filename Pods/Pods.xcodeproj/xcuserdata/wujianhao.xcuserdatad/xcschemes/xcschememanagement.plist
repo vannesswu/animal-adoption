@@ -4,12 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>GoogleToolboxForMac.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>LBTAComponents.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-aniamal-adoption.xcscheme</key>
+		<key>Pods-animal-adoption.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>00103D6C821BE85971C563025527BA5D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1A196107BC8DB338FC11C9CE9510573C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FF0E7DEECC67C2C244BEA825B4C06D2D</key>
+		<key>A40396309BFF464624FA6F3C86AE507B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
