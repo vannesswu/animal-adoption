@@ -26,7 +26,7 @@ class SearchCell: UICollectionViewCell {
             if UserDefaults.fetchisRemeberSetting() {
                 if let setting = UserDefaults.fetchSearchSetting() as? [String:String] {
                     optionButton.setTitle(setting[titleKey], for: .normal)
-                }
+                }else { optionButton.setTitle("不限", for: .normal) }
             } else {
                 optionButton.setTitle("不限", for: .normal)
             }

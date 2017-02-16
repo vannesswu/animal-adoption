@@ -137,6 +137,11 @@ class SearchLauncher: NSObject {
     func setupHeaderView() {
         SearchView.addSubview(headerView)
         headerView.anchor(SearchView.topAnchor, left: SearchView.leftAnchor, bottom: nil, right: SearchView.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 44+20+70)
+        let statusBarBackgroundView = UIView()
+        statusBarBackgroundView.backgroundColor = UIColor.darkBlue
+        SearchView.addSubview(statusBarBackgroundView)
+        statusBarBackgroundView.anchor(SearchView.topAnchor, left: SearchView.leftAnchor, bottom: nil, right: SearchView.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 20)
+        
         let titleLabel = UILabel()
         titleLabel.text = "設定搜尋條件"
         titleLabel.textColor = UIColor.white

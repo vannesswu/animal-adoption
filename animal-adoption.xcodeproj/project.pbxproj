@@ -15,6 +15,7 @@
 		6102815F1E5427C6004E14BB /* AdoptCuteVideos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6102815E1E5427C6004E14BB /* AdoptCuteVideos.swift */; };
 		610281611E5432A0004E14BB /* AdoptAboutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610281601E54329F004E14BB /* AdoptAboutApp.swift */; };
 		610281631E5486CB004E14BB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 610281621E5486CB004E14BB /* GoogleService-Info.plist */; };
+		61678A6F1E54ACB900CE1167 /* NativeExpressAd.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61678A6E1E54ACB900CE1167 /* NativeExpressAd.xib */; };
 		6184618A1E48DB860062E0FE /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618461891E48DB860062E0FE /* ApiService.swift */; };
 		6184618C1E49C8DB0062E0FE /* AnimalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184618B1E49C8DB0062E0FE /* AnimalDetailViewController.swift */; };
 		6184618E1E49E26D0062E0FE /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184618D1E49E26D0062E0FE /* DetailCell.swift */; };
@@ -47,6 +48,7 @@
 		6102815E1E5427C6004E14BB /* AdoptCuteVideos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdoptCuteVideos.swift; sourceTree = "<group>"; };
 		610281601E54329F004E14BB /* AdoptAboutApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdoptAboutApp.swift; sourceTree = "<group>"; };
 		610281621E5486CB004E14BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		61678A6E1E54ACB900CE1167 /* NativeExpressAd.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NativeExpressAd.xib; sourceTree = "<group>"; };
 		618461891E48DB860062E0FE /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		6184618B1E49C8DB0062E0FE /* AnimalDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalDetailViewController.swift; sourceTree = "<group>"; };
 		6184618D1E49E26D0062E0FE /* DetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				618461D11E4F60AE0062E0FE /* SearchOptionCell.swift */,
 				618461CF1E4F01800062E0FE /* FavoriteAnimalCell.swift */,
 				61DFC0AD1E48B50E0017923C /* AnimalResultCell.swift */,
+				61678A6E1E54ACB900CE1167 /* NativeExpressAd.xib */,
 				610281541E535188004E14BB /* AdoptNoteCell.swift */,
 				6102815C1E54198C004E14BB /* AdoptNoteCell_4Views */,
 			);
@@ -268,6 +271,7 @@
 			files = (
 				61DFC0A61E48A94B0017923C /* LaunchScreen.storyboard in Resources */,
 				61DFC0A31E48A94B0017923C /* Assets.xcassets in Resources */,
+				61678A6F1E54ACB900CE1167 /* NativeExpressAd.xib in Resources */,
 				610281631E5486CB004E14BB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,6 +471,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4ANE8KXCD8;
 				INFOPLIST_FILE = "aniamal-adoption/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vanness-wu.animal-adoption";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -483,6 +488,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4ANE8KXCD8;
 				INFOPLIST_FILE = "aniamal-adoption/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vanness-wu.animal-adoption";
 				PRODUCT_NAME = "$(TARGET_NAME)";

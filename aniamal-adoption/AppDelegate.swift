@@ -11,6 +11,8 @@ import LBTAComponents
 import Firebase
 
 var adsNumber:Int = 0
+var isAdsshown = false
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -35,12 +37,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.statusBarStyle = .lightContent
         let statusBarBackgroundView = UIView()
+        statusBarBackgroundView.alpha = 0.8
         statusBarBackgroundView.backgroundColor = UIColor.darkBlue
         window?.addSubview(statusBarBackgroundView)
         window?.addConstraintsWithFormat("H:|[v0]|", views: statusBarBackgroundView)
         window?.addConstraintsWithFormat("V:|[v0(20)]", views: statusBarBackgroundView)
         
-        adsNumber = Int(arc4random_uniform(5))+3
+        adsNumber = Int(arc4random_uniform(5))+8
         return true
     }
 

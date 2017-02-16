@@ -54,6 +54,10 @@ class AnimalDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if isAdsshown {
+            UIWindow.addStatusBar()
+        }
+        isAdsshown = false
         view.backgroundColor = UIColor.white
         
         let backBarButtonItem = UIBarButtonItem(title: "回前頁", style: UIBarButtonItemStyle.plain, target: nil, action: nil)

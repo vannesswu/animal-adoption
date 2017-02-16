@@ -18,7 +18,7 @@ static let shareInstatance = ApiService()
     let baseUrl = "http://data.coa.gov.tw/Service/OpenData/AnimalOpenData.aspx"
     
     
-    func fetchAnimals(_ parameter:String, completion: @escaping ([Animal]) -> () ){
+    func fetchAnimals(_ parameter:String, completion: @escaping ([Animal],_ error:Error?) -> () ){
         let urlWithParameter = baseUrl + "?$top=1000&$skip=0&"+parameter
         
         let url = URL(string: urlWithParameter)
@@ -30,6 +30,9 @@ static let shareInstatance = ApiService()
         
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
             if error != nil {
+                DispatchQueue.main.async {
+                    completion([Animal](), error)
+                }
                 print(error ?? "")
                 return
             }
@@ -42,7 +45,7 @@ static let shareInstatance = ApiService()
                     animals.append(animal)
                 }
                 DispatchQueue.main.async {
-                    completion(animals)
+                    completion(animals, error)
                 }
             
             } catch let error{

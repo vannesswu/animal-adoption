@@ -54,6 +54,10 @@ extension UIColor {
     static let lightGray = {
         return UIColor(r: 211, g: 211, b: 211)
     }()
+    static let midleGray = {
+        return UIColor(r: 135, g: 135, b: 135)
+    }()
+    
     static let adoptBlue = {
         return UIColor(r: 51, g: 139, b: 227)
     }()
@@ -99,5 +103,29 @@ extension UILabel {
      label.alpha = 0.87
     return label
     }    
+}
+extension UIWindow {
+    static func addStatusBar(){
+        let statusBarBackgroundView = UIView()
+        statusBarBackgroundView.backgroundColor = UIColor.darkBlue
+        if let window = UIApplication.shared.keyWindow {
+        window.addSubview(statusBarBackgroundView)
+        window.addConstraintsWithFormat("H:|[v0]|", views: statusBarBackgroundView)
+        window.addConstraintsWithFormat("V:|[v0(20)]", views: statusBarBackgroundView)
+        }
+    }
+    static func removeStatusBar(){
+        if let window = UIApplication.shared.keyWindow {
+            for view in window.subviews {
+                if view.backgroundColor == UIColor.darkBlue {
+                    view.removeFromSuperview()
+                }
+            }
+        }
+    }
+
+    
+    
+    
 }
 

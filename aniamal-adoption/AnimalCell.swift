@@ -70,7 +70,10 @@ class AnimalCell: UICollectionViewCell {
         addSubview(separatorView)
         animalView.addSubview(spinner)
         
-        animalView.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, topConstant: 8, leftConstant: 8, bottomConstant: 8, rightConstant: 0, widthConstant: 84*16/9, heightConstant: 0)
+        
+
+        
+        animalView.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, topConstant: 8, leftConstant: 8, bottomConstant: 8, rightConstant: 0, widthConstant: 84*4/3, heightConstant: 0)
         cityLabel.anchor(animalView.topAnchor, left: animalView.rightAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 0, widthConstant: 80, heightConstant: 40)
         sexualLabel.anchor(cityLabel.topAnchor, left: cityLabel.rightAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 80, heightConstant: 40)
         loctionLabel.anchor(cityLabel.bottomAnchor, left: animalView.rightAnchor, bottom: nil, right: rightAnchor, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 40)
