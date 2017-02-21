@@ -41,7 +41,7 @@ class AnimalCell: UICollectionViewCell {
     
     let animalView: CachedImageView = {
        let imageView = CachedImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
         

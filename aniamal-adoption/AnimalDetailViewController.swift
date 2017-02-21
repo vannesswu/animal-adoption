@@ -36,7 +36,7 @@ class AnimalDetailViewController: UIViewController {
     
     let animalView: CachedImageView = {
         let imageView = CachedImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
 //        imageView.layer.cornerRadius = 20
         imageView.clipsToBounds = true
         
@@ -113,6 +113,7 @@ class AnimalDetailViewController: UIViewController {
             let fromeFrame = (animal?.favorite)! ? profileFrame : favoriteFrame
             let toFrame = (animal?.favorite)! ? favoriteFrame : profileFrame
             animateView.image = self.animalView.image
+            animateView.contentMode = .scaleAspectFit
             animateView.frame = fromeFrame!
             
                 UIView.animate(withDuration: 0.8, delay: 0, options: .curveEaseInOut, animations: {
@@ -131,6 +132,7 @@ class AnimalDetailViewController: UIViewController {
         animalView.anchor(self.view.topAnchor, left: self.view.leftAnchor, bottom: nil, right: self.view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: imageHeight)
         if let urlString = animal?.album_file {
         animalView.loadImage(urlString: urlString)
+    
         }
     }
     
