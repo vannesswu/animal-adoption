@@ -30,8 +30,8 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         
         didSet{
             if performSearch {
-            self.collectionView?.reloadData()
-                performSearch = false
+                self.collectionView?.reloadData()
+          //      performSearch = false
             }
         }
     }
@@ -181,6 +181,13 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         if indexPath.item == 0 {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: animalResultcellId, for: indexPath) as! AnimalResultCell
             cell.cellIndex = indexPath.item
+            if performSearch {
+            cell.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0),
+                                             at: .top,
+                                             animated: true)
+                performSearch = false
+
+            }
             cell.delegateController = self
             
         } else if indexPath.item == 1{

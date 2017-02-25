@@ -58,6 +58,9 @@ class AnimalResultCell: UICollectionViewCell, UICollectionViewDataSource, UIColl
             preloadNextAd()
             animals = mixanimals
             self.collectionView.reloadData()
+            
+
+            
         }
     }
     lazy var collectionView: UICollectionView = {
