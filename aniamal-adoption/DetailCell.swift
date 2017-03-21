@@ -59,6 +59,10 @@ class DetailCell: UICollectionViewCell {
            case 11:
                 keyLabel.text = "電話"
                 valueLabel.text = animal?.shelter_tel ?? ""
+            case 12:
+                keyLabel.text = "注意事項"
+                valueLabel.text = "因資料維護由各收容所負責 前往收容所前請先打電話詢問此編號是否仍在！"
+                
             default:
                 break
             }

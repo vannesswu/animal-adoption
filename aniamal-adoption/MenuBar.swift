@@ -13,7 +13,7 @@ class MenuBar: UIView {
     
     let cellId = "menuCellId"
     let imageNames = ["home", "love", "note"]
-    var searchConditions:[String:String?] = ["區域":"臺北市", "分類":"狗", "體型":nil, "年紀":nil, "毛色":nil, "性別":nil]
+    var searchConditions:[String:String?] = ["區域":"不限", "分類":"不限", "體型":nil, "年紀":nil, "毛色":nil, "性別":nil]
     var homeViewController : HomeViewController?
     var result:Int? {
         didSet {

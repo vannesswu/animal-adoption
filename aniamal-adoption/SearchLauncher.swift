@@ -179,6 +179,7 @@ class SearchLauncher: NSObject {
     func handleDefaultSetting() {
         UserDefaults.standard.set(!UserDefaults.fetchisRemeberSetting(), forKey: "rememberSetting")
         rememberButton.setImage(UserDefaults.fetchisRemeberSetting() ? #imageLiteral(resourceName: "remember") : nil, for: .normal)
+        UserDefaults.standard.synchronize()
         
     }
     

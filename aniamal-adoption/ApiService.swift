@@ -19,7 +19,7 @@ static let shareInstatance = ApiService()
     
     
     func fetchAnimals(_ parameter:String, completion: @escaping ([Animal],_ error:Error?) -> () ){
-        let urlWithParameter = baseUrl + "?$top=1000&$skip=0&"+parameter
+        let urlWithParameter = baseUrl + "?$top=9000&$skip=0&"+parameter
         
         let url = URL(string: urlWithParameter)
         var animals = [Animal]()
@@ -40,9 +40,12 @@ static let shareInstatance = ApiService()
                 let jsonDict = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [[String:AnyObject]]
             
                 for dict in jsonDict {
-                    
+                   
                    let animal = Animal(dict as NSDictionary)
+                   if let createDate = animal.animal_createtime, Animal.judgeDateIsQualified(createDate){
+                    
                     animals.append(animal)
+                    }
                 }
                 DispatchQueue.main.async {
                     completion(animals, error)
@@ -64,7 +67,7 @@ static let shareInstatance = ApiService()
             if let value = value , value != "不限" {
                 switch key {
                 case "區域":
-                    if value != "臺中市" && value != "雲林縣"{
+                    if value != "臺中市" && value != "雲林縣" && value != "桃園市" && value != "新北市"{
                         parameterArray.append("animal_place+like+\(value.addEncoding())")
                     } else {
                         let pkg_id = reverseCityDict[value]!

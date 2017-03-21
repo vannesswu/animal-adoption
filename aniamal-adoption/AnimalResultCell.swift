@@ -36,7 +36,7 @@ class AnimalResultCell: UICollectionViewCell, UICollectionViewDataSource, UIColl
             self.searchConditions = (delegateController?.searchConditions)!
         }
     }
-    var searchConditions:[String:String?] = ["區域":"臺北市", "分類":"狗", "體型":nil, "年紀":nil, "毛色":nil, "性別":nil] {
+    var searchConditions:[String:String?] = ["區域":"不限", "分類":"不限", "體型":nil, "年紀":nil, "毛色":nil, "性別":nil] {
         didSet {
             if self.cellIndex == 0, oldSearchConditions != searchConditions {
                 self.featchAnimals(dict: searchConditions)
@@ -96,9 +96,18 @@ class AnimalResultCell: UICollectionViewCell, UICollectionViewDataSource, UIColl
                 return
             }
             self.handleingView.removeFromSuperview()
+            if let area = self.searchConditions["區域"]! ,area != "不限" {
+            self.animals = animals.filter({ (animal:Animal) -> Bool in
+                if let animalArea = animal.animal_area_pkid {
+                return animalArea == area
+                }
+                return false
+            })
+            } else {
             self.animals = animals
+            }
             self.delegateController?.searchConditions = self.searchConditions
-            self.delegateController?.resultCount = animals.count
+            self.delegateController?.resultCount = self.animals.count
 
         }
         

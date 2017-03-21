@@ -26,7 +26,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
             menuBar.result = resultCount
         }
     }
-    var searchConditions:[String:String?] = ["區域":"臺北市", "分類":"狗", "體型":nil, "年紀":nil, "毛色":nil, "性別":nil] {
+    var searchConditions:[String:String?] = ["區域":"不限", "分類":"不限", "體型":nil, "年紀":nil, "毛色":nil, "性別":nil] {
         
         didSet{
             if performSearch {
@@ -181,7 +181,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         if indexPath.item == 0 {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: animalResultcellId, for: indexPath) as! AnimalResultCell
             cell.cellIndex = indexPath.item
-            if performSearch {
+            if performSearch && cell.animals.count != 0 {
             cell.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0),
                                              at: .top,
                                              animated: true)

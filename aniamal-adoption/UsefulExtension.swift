@@ -123,9 +123,19 @@ extension UIWindow {
             }
         }
     }
+}
 
+extension String {
+    static func judgeDateIsQualified(_ date:String) -> Bool {
+        let dateFormatter = DateFormatter()
+        let zeroKillDate = "2017-02-07 00:00:00"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        if let createDate = dateFormatter.date(from: date) , let zeroKillAnimalDate = dateFormatter.date(from: zeroKillDate) {
+        return createDate  > zeroKillAnimalDate
+        }
+        return false
+    }
     
     
     
 }
-

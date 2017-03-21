@@ -28,8 +28,9 @@ class Animal: NSObject, NSCoding {
     var shelter_tel:String?
     var album_file:String?
     var animal_remark:String?
+    var animal_createtime:String?
     var favorite:Bool = false
-    let propertyArray = ["animal_id","animal_subid","animal_area_pkid","animal_place","shelter_name","animal_kind","animal_sex","animal_bodytype","animal_colour","animal_age","animal_sterilization","animal_status","animal_opendate","shelter_address","shelter_tel","album_file","animal_remark","favorite"]
+    let propertyArray = ["animal_id","animal_subid","animal_area_pkid","animal_place","shelter_name","animal_kind","animal_sex","animal_bodytype","animal_colour","animal_age","animal_sterilization","animal_status","animal_opendate","shelter_address","shelter_tel","album_file","animal_remark","favorite","animal_createtime"]
     
     init(_ dict:NSDictionary) {
         
@@ -70,6 +71,7 @@ class Animal: NSObject, NSCoding {
         self.shelter_tel = dict["shelter_tel"] as? String
         self.album_file = dict["album_file"] as? String
         self.animal_remark = dict["animal_remark"] as? String
+        self.animal_createtime = dict["animal_createtime"] as? String
 
     }
     required init?(coder aDecoder: NSCoder) {
@@ -92,6 +94,7 @@ class Animal: NSObject, NSCoding {
         self.album_file = aDecoder.decodeObject(forKey: "album_file") as? String
         self.animal_remark = aDecoder.decodeObject(forKey: "animal_remark") as? String
         self.favorite = aDecoder.decodeBool(forKey: "favorite") as Bool
+        self.animal_createtime = aDecoder.decodeObject(forKey: "animal_createtime") as? String
         
     }
     
@@ -113,9 +116,19 @@ class Animal: NSObject, NSCoding {
         aCoder.encode(self.album_file, forKey: "album_file")
         aCoder.encode(self.animal_remark, forKey: "animal_remark")
         aCoder.encode(self.favorite, forKey: "favorite")
+        aCoder.encode(self.animal_createtime, forKey: "animal_createtime")
         
     }
-    
+    static func judgeDateIsQualified(_ date:String) -> Bool {
+        let dateFormatter = DateFormatter()
+        let zeroKillDate = "2017-02-07 00:00:00"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        if let createDate = dateFormatter.date(from: date) , let zeroKillAnimalDate = dateFormatter.date(from: zeroKillDate) {
+            return createDate  > zeroKillAnimalDate
+        }
+        return false
+    }
+
     
 }
 

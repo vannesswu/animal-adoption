@@ -156,7 +156,7 @@ extension AnimalDetailViewController: UICollectionViewDataSource, UICollectionVi
     
     
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return 13
     }
     
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
