@@ -9,54 +9,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "aniamal-adoption/AnimalResultCell.swift"
-            timestampString = "511809483.259233"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "aniamal-adoption/HomeViewController.swift"
-            timestampString = "511809649.891383"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "pushDetailViewController(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "aniamal-adoption/HomeViewController.swift"
-            timestampString = "511809650.450819"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "pushDetailViewController(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "aniamal-adoption/AnimalDetailViewController.swift"
             timestampString = "511810097.878314"
             startingColumnNumber = "9223372036854775807"
@@ -138,7 +90,7 @@
                   moduleName = "animal-adoption"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wujianhao/Documents/project/aniamal-adoption/aniamal-adoption/AnimalDetailViewController.swift"
-                  timestampString = "511810549.341981"
+                  timestampString = "515007178.940501"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "89"
@@ -153,7 +105,7 @@
                   moduleName = "animal-adoption"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wujianhao/Documents/project/aniamal-adoption/aniamal-adoption/AnimalDetailViewController.swift"
-                  timestampString = "511810549.344442"
+                  timestampString = "515007178.94425"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "89"
@@ -186,7 +138,7 @@
                   moduleName = "animal-adoption"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wujianhao/Documents/project/aniamal-adoption/aniamal-adoption/AnimalDetailViewController.swift"
-                  timestampString = "511810549.350017"
+                  timestampString = "515007178.951732"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "90"
@@ -201,7 +153,7 @@
                   moduleName = "animal-adoption"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wujianhao/Documents/project/aniamal-adoption/aniamal-adoption/AnimalDetailViewController.swift"
-                  timestampString = "511810549.352654"
+                  timestampString = "515007178.954808"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "90"
@@ -266,7 +218,7 @@
                   moduleName = "animal-adoption"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wujianhao/Documents/project/aniamal-adoption/aniamal-adoption/AnimalDetailViewController.swift"
-                  timestampString = "511810549.367965"
+                  timestampString = "515007178.972294"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "95"
@@ -281,7 +233,7 @@
                   moduleName = "animal-adoption"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wujianhao/Documents/project/aniamal-adoption/aniamal-adoption/AnimalDetailViewController.swift"
-                  timestampString = "511810549.371439"
+                  timestampString = "515007178.974917"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "96"
@@ -346,7 +298,7 @@
                   moduleName = "animal-adoption"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wujianhao/Documents/project/aniamal-adoption/aniamal-adoption/AnimalDetailViewController.swift"
-                  timestampString = "511810549.393813"
+                  timestampString = "515007178.993882"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "97"
@@ -361,7 +313,7 @@
                   moduleName = "animal-adoption"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wujianhao/Documents/project/aniamal-adoption/aniamal-adoption/AnimalDetailViewController.swift"
-                  timestampString = "511810549.3982"
+                  timestampString = "515007178.996931"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "97"
@@ -384,38 +336,6 @@
             startingLineNumber = "98"
             endingLineNumber = "98"
             landmarkName = "selectToFavorite()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "aniamal-adoption/UsefulExtension.swift"
-            timestampString = "511810299.744414"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "fetchFavoriteAnimals()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "aniamal-adoption/UsefulExtension.swift"
-            timestampString = "511810300.495921"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "fetchFavoriteAnimals()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

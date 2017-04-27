@@ -16,7 +16,7 @@ class SearchLauncher: NSObject {
     let headerId = "SearchheaderId"
     let footerId = "SearchfooterId"
     let cellHeight: CGFloat = 50
-    var conditionDelegate: HomeViewController?
+    var conditionDelegate: ShelterViewController?
     
     var searchConditions:[String:String?] = ["區域":nil, "分類":nil, "體型":nil, "年紀":nil, "毛色":nil, "性別":nil]
     

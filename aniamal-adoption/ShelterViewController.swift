@@ -10,7 +10,7 @@ import UIKit
 import LBTAComponents
 import GoogleMobileAds
 
-class HomeViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class ShelterViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var isFirstLaunchForSettingCondition = true
     let animalResultcellId = "animalResultCellId"
@@ -45,7 +45,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     override func viewDidLoad() {
         super.viewDidLoad()
    //     navigationController?.delegate = self
-        navigationItem.title = "動物認領養"
+        navigationItem.title = "動物認領養(收容所)"
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
          navigationController?.navigationBar.isTranslucent = false
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: nil, action: nil)

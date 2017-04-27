@@ -31,7 +31,7 @@ class AnimalResultCell: UICollectionViewCell, UICollectionViewDataSource, UIColl
     
     
     
-    var delegateController:HomeViewController? {
+    var delegateController:ShelterViewController? {
         didSet {
             self.searchConditions = (delegateController?.searchConditions)!
         }

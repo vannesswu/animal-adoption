@@ -14,7 +14,7 @@ class MenuBar: UIView {
     let cellId = "menuCellId"
     let imageNames = ["home", "love", "note"]
     var searchConditions:[String:String?] = ["區域":"不限", "分類":"不限", "體型":nil, "年紀":nil, "毛色":nil, "性別":nil]
-    var homeViewController : HomeViewController?
+    var homeViewController : ShelterViewController?
     var result:Int? {
         didSet {
             let cityLabel:String = searchConditions["區域"]!! == "不限" ? "不限地區" : searchConditions["區域"]!!

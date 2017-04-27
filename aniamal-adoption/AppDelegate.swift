@@ -27,9 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // create main viewcontroller
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        let layout = UICollectionViewFlowLayout()
-        let navigationController = UINavigationController(rootViewController: HomeViewController(collectionViewLayout: layout ))
-        window?.rootViewController = navigationController
+//        let layout = UICollectionViewFlowLayout()
+//        let navigationController = UINavigationController(rootViewController: ShelterViewController(collectionViewLayout: layout ))
+        window?.rootViewController = HomeTabBarController()
         UINavigationBar.appearance().barTintColor = UIColor.mainBlue
         // get rid of black bar underneath navbar
         UINavigationBar.appearance().shadowImage = UIImage()

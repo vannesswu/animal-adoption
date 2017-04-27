@@ -16,7 +16,7 @@ class ApiService: NSObject {
 static let shareInstatance = ApiService()
     
     let baseUrl = "http://data.coa.gov.tw/Service/OpenData/AnimalOpenData.aspx"
-    
+    let fbBaseUrl = "https://nodejs-fbanimal-server.herokuapp.com/api/fbanimals/"
     
     func fetchAnimals(_ parameter:String, completion: @escaping ([Animal],_ error:Error?) -> () ){
         let urlWithParameter = baseUrl + "?$top=9000&$skip=0&"+parameter
@@ -59,6 +59,39 @@ static let shareInstatance = ApiService()
         }.resume()
         
     }
+    
+    func fetchFBAnimal( completion: @escaping ([FBAnimal],_ error:Error?) -> () ) {
+        
+        let url = URL(string: fbBaseUrl)
+        var fbAnimals = [FBAnimal]()
+
+        URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            if error != nil {
+                DispatchQueue.main.async {
+                    completion([FBAnimal](), error)
+                }
+                print(error ?? "")
+                return
+            }
+            do {
+                let jsonDict = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [[String:AnyObject]]
+                
+                for dict in jsonDict {
+                    
+                    let animal = FBAnimal(dict as NSDictionary)
+                    fbAnimals.append(animal)
+                    
+                }
+                DispatchQueue.main.async {
+                    completion(fbAnimals, error)
+                }
+                
+            } catch let error{
+                print(error)
+             }
+            }.resume()
+    }
+    
     
     func transDictToUrlFormat(_ dict:[String:String?]) -> String {
         
