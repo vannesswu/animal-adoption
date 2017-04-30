@@ -17,7 +17,7 @@ var isAdsshown = false
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let homeTabBarController = HomeTabBarController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
 //        let layout = UICollectionViewFlowLayout()
 //        let navigationController = UINavigationController(rootViewController: ShelterViewController(collectionViewLayout: layout ))
-        window?.rootViewController = HomeTabBarController()
+        window?.rootViewController = homeTabBarController
         UINavigationBar.appearance().barTintColor = UIColor.mainBlue
         // get rid of black bar underneath navbar
         UINavigationBar.appearance().shadowImage = UIImage()
@@ -63,6 +63,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        
+        
+        
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

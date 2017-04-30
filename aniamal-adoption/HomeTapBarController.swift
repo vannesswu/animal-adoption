@@ -24,7 +24,8 @@ class HomeTabBarController:UITabBarController {
         
         tabBar.isTranslucent = false
         viewControllers = [shelterViewNavController,fbViewNavController ]
-
+        
+       
     }
     
     

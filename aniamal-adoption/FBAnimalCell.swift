@@ -15,12 +15,18 @@ class FBAnimalCell: UITableViewCell {
     var fbAnimal:FBAnimal? {
         didSet {
             self.groupLabel.text = "FB社團 : \(fbAnimal?.group ?? "")"
-            self.messageLabel.text = "內文 : \(fbAnimal?.message ?? "")"
+            self.messageLabel.text = "\(fbAnimal?.message ?? "")"
             self.spinner.startAnimating()
             if let urlString = fbAnimal?.picture {
+                if urlString == "nil" {
+                    self.animalView.image = #imageLiteral(resourceName: "no_image")
+                    self.spinner.stopAnimating()
+
+                } else {
                 self.animalView.loadImage(urlString: urlString, completion: {
                     self.spinner.stopAnimating()
-                })
+                 })
+                }
             }
         }
 
@@ -67,7 +73,7 @@ class FBAnimalCell: UITableViewCell {
         addSubview(groupLabel)
         addSubview(messageLabel)
         
-        animalView.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, topConstant: 5, leftConstant: 5, bottomConstant: 5, rightConstant: 0, widthConstant: 60, heightConstant: 0)
+        animalView.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, topConstant: 5, leftConstant: 5, bottomConstant: 5, rightConstant: 0, widthConstant: 80, heightConstant: 0)
         groupLabel.anchor(animalView.topAnchor, left: animalView.rightAnchor, bottom: nil, right: rightAnchor, topConstant: 0, leftConstant: 10, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 20)
         messageLabel.anchor(groupLabel.bottomAnchor, left: groupLabel.leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         

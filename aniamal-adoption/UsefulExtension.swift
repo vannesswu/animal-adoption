@@ -54,6 +54,9 @@ extension UIColor {
     static let lightGray = {
         return UIColor(r: 211, g: 211, b: 211)
     }()
+    static let superLightGray = {
+        return UIColor(r: 233, g: 233, b: 233)
+    }()
     static let midleGray = {
         return UIColor(r: 135, g: 135, b: 135)
     }()
