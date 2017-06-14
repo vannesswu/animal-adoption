@@ -67,6 +67,7 @@ class FBAnimalDetailViewController: UIViewController {
     let messageTextView:UITextView = {
         let tv = UITextView()
         tv.allowsEditingTextAttributes = false
+        tv.isEditable = false
         tv.font = UIFont.systemFont(ofSize: 15)
         return tv
     }()
