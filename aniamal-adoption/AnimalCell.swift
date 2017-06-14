@@ -30,6 +30,7 @@ class AnimalCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        layoutIfNeeded()
         setupViews()
         
     }

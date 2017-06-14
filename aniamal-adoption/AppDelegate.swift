@@ -42,7 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.addSubview(statusBarBackgroundView)
         window?.addConstraintsWithFormat("H:|[v0]|", views: statusBarBackgroundView)
         window?.addConstraintsWithFormat("V:|[v0(20)]", views: statusBarBackgroundView)
-        
         adsNumber = Int(arc4random_uniform(5))+8
         return true
     }

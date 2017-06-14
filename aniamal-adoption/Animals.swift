@@ -36,8 +36,8 @@ class Animal: NSObject, NSCoding {
         
         self.animal_id = dict["animal_id"] as? String
         self.animal_subid = dict["animal_subid"] as? String
-        if let city = dict["animal_area_pkid"] as? String{
-        self.animal_area_pkid = cityDict[city]
+        if let city = dict["animal_area_pkid"] as? Int{
+        self.animal_area_pkid = cityDict[String(city)]
         }else {
         self.animal_area_pkid = nil
         }
