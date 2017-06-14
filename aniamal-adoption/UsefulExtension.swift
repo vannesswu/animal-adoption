@@ -103,6 +103,7 @@ extension UIActivityIndicatorView {
 extension UILabel {
     static func makeWhiteBackoundLabel() -> UILabel {
      let label = UILabel()
+     label.textAlignment = .center
      label.alpha = 0.87
     return label
     }    
