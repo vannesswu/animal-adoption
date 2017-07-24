@@ -325,7 +325,10 @@ func addNativeExpressAds() {
 func preloadNextAd() {
     if !adsToLoad.isEmpty {
         let ad = adsToLoad.removeFirst()
-        ad.load(GADRequest())
+        DispatchQueue.global().async {
+            ad.load(GADRequest())
+        }
+       
     }
 }
 

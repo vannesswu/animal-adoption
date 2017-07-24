@@ -167,8 +167,7 @@ class ShelterViewController: UICollectionViewController, UICollectionViewDelegat
        menuBar.horizontalBarLeftAnchorConstraint?.constant = scrollView.contentOffset.x / 3
         
     }
-    
-    
+        
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
