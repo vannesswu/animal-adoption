@@ -93,7 +93,7 @@ class SearchLauncher: NSObject {
                 
                 self.blackView.alpha = 1
                 
-                self.SearchView.frame = CGRect(x: window.frame.width/2, y: 0, width: self.SearchView.frame.width, height: self.SearchView.frame.height)
+                self.SearchView.frame = CGRect(x: window.frame.width/2, y: iphoneXHeight, width: self.SearchView.frame.width, height: self.SearchView.frame.height)
                 
             }, completion: nil)
         }

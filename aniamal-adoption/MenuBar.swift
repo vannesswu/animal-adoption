@@ -147,6 +147,7 @@ class MenuBarCell: UICollectionViewCell {
         imageView.anchorCenterSuperview()
         imageView.anchor(nil, left: nil, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 28, heightConstant: 28)
     }
+   
 }
 
 
