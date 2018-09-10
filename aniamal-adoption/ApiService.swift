@@ -48,6 +48,9 @@ class ApiService:NSObject {
           }
         }
         DispatchQueue.main.async {
+          animals = animals.sorted { (animal:Animal, animal2:Animal) -> Bool in
+            animal.numberOfSubId > animal2.numberOfSubId
+          }
           completion(animals, error)
         }
 

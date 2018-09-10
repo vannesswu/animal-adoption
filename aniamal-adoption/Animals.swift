@@ -31,6 +31,25 @@ class Animal:NSObject, NSCoding {
   var animal_createtime:String?
   var favorite:Bool = false
   let propertyArray = ["animal_id", "animal_subid", "animal_area_pkid", "animal_place", "shelter_name", "animal_kind", "animal_sex", "animal_bodytype", "animal_colour", "animal_age", "animal_sterilization", "animal_status", "animal_opendate", "shelter_address", "shelter_tel", "album_file", "animal_remark", "favorite", "animal_createtime"]
+  var date:Date {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    if let createTime = animal_opendate,
+       let createDate = dateFormatter.date(from:createTime) {
+      return createDate
+    }
+    return Animal.defaultDate
+  }
+  var numberOfSubId:Int {
+    if let id = animal_subid {
+      let subid = id.filter { (character:Character) -> Bool in
+        Int(String(character)) != nil
+      }
+      return Int(String(subid[0...8])) ?? 0
+    }
+    return 0
+  }
+  static let defaultDate = Date.init(timeIntervalSince1970:0)
 
   init(_ dict:NSDictionary) {
 
