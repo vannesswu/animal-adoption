@@ -45,7 +45,7 @@ class Animal:NSObject, NSCoding {
       let subid = id.filter { (character:Character) -> Bool in
         Int(String(character)) != nil
       }
-      if subid.count > 9 {
+      if subid.count >= 9 {
         return Int(String(subid[0...8])) ?? 0
       } else {
         return 0
